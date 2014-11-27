@@ -7,6 +7,9 @@ import ca.csf.rrr.RunRunnerRunGame;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+        config.title = "Run Runner Run";
+        config.width = 480;
+        config.height = 320;
 		new LwjglApplication(new RunRunnerRunGame(), config);
 	}
 }
