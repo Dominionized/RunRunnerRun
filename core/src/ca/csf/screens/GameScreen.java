@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 
 import ca.csf.gameworld.GameRenderer;
 import ca.csf.gameworld.GameWorld;
+import ca.csf.rrrhelpers.InputHandler;
 
 public class GameScreen implements Screen {
     private GameWorld world;
@@ -23,6 +24,8 @@ public class GameScreen implements Screen {
 
         world.update(delta);
         renderer.render();
+
+        Gdx.input.setInputProcessor(new InputHandler(world.getRunner()));
     }
 
     @Override

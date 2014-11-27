@@ -28,14 +28,5 @@ public class GameRenderer {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        shapeRenderer.begin(ShapeType.Filled);
-        shapeRenderer.setColor(87/255.0f, 109/255.0f, 120/255.0f, 1);
-        shapeRenderer.rect(myWorld.getRect().x, myWorld.getRect().y, myWorld.getRect().width, myWorld.getRect().height);
-        shapeRenderer.end();
-
-        shapeRenderer.begin(ShapeType.Line);
-        shapeRenderer.setColor(255/255.0f, 109/255.0f, 120/255.0f,1);
-        shapeRenderer.rect(myWorld.getRect().x, myWorld.getRect().y, myWorld.getRect().width, myWorld.getRect().height);
-        shapeRenderer.end();
     }
 }
