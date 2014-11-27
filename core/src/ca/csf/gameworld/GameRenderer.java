@@ -43,15 +43,11 @@ public class GameRenderer {
 
         // Draw Background color
         shapeRenderer.setColor(55 / 255.0f, 80 / 255.0f, 100 / 255.0f, 1);
-        shapeRenderer.rect(0, 0, 136, HEIGHT/2 + 66);
+        shapeRenderer.rect(0, 0, WIDTH, HEIGHT);
 
         // Draw Grass
         shapeRenderer.setColor(111 / 255.0f, 186 / 255.0f, 45 / 255.0f, 1);
-        shapeRenderer.rect(0, HEIGHT/2 + 66, 136, 11);
-
-        // Draw Dirt
-        shapeRenderer.setColor(147 / 255.0f, 80 / 255.0f, 27 / 255.0f, 1);
-        shapeRenderer.rect(0, HEIGHT/2 + 77, 136, 52);
+        shapeRenderer.rect(0, HEIGHT-HEIGHT/4, WIDTH, HEIGHT/4);
 
         // End ShapeRenderer
         shapeRenderer.end();
@@ -62,14 +58,14 @@ public class GameRenderer {
         // This is good for performance when drawing images that do not require
         // transparency.
         batcher.disableBlending();
-        batcher.draw(AssetLoader.bg, 0, HEIGHT/2 + 23, 136, 43);
-
+        batcher.draw(AssetLoader.bg, 0, 0, WIDTH, HEIGHT*3/4);
+/*
         batcher.enableBlending();
 
         // Pass in the runTime variable to get the current frame.
         batcher.draw(AssetLoader.runnerAnimation.getKeyFrame(runTime),
                 runner.getX(), runner.getY(), runner.getWidth(), runner.getHeight());
-
+*/
         // End SpriteBatch
         batcher.end();
     }

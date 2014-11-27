@@ -17,7 +17,10 @@ public class AssetLoader {
     public static TextureRegion box;
 
     public static void load(){
-        texture = new Texture(Gdx.files.internal("textures.png"));
+        texture = new Texture(Gdx.files.internal("sky.png"));
+        bg = new TextureRegion(texture, 0, 0, 128, 32);
+        bg.flip(false, true);
+        /*
         texture.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 
         //TextureRegion(texture, x, y, width, height)
@@ -38,6 +41,7 @@ public class AssetLoader {
 
         box = new TextureRegion(texture, 0,0,0,0);
         box.flip(false, true);
+        */
     }
 
     public static void dispose(){
