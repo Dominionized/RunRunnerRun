@@ -28,7 +28,7 @@
             </struct>
         </array>
         <key>allowRotation</key>
-        <true/>
+        <false/>
         <key>premultiplyAlpha</key>
         <false/>
         <key>shapeDebug</key>
@@ -195,7 +195,10 @@
             <filename>hatguy.png</filename>
             <filename>runner_idle.png</filename>
             <filename>sky.png</filename>
-            <filename>runner.png</filename>
+            <filename>runner1.png</filename>
+            <filename>runner2.png</filename>
+            <filename>runner3.png</filename>
+            <filename>runner4.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
