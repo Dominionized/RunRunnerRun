@@ -54,8 +54,8 @@ public class GameRenderer {
         // transparency.
         batcher.disableBlending();
 
-        batcher.draw(AssetLoader.sky, 0, 0, WIDTH, HEIGHT*3/4);
-        batcher.draw(AssetLoader.ground, 0, HEIGHT-HEIGHT/4, WIDTH, HEIGHT/4);
+        batcher.draw(AssetLoader.sky, 0, 0, WIDTH, HEIGHT*7/8);
+        batcher.draw(AssetLoader.ground, 0, HEIGHT-HEIGHT/8, WIDTH, HEIGHT/8);
 
         batcher.enableBlending();
 
