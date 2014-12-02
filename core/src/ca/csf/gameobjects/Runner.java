@@ -2,17 +2,17 @@ package ca.csf.gameobjects;
 
 import com.badlogic.gdx.math.Vector2;
 
-public class Runner {
-    private Vector2 position;
-    private Vector2 velocity;
-    private Vector2 acceleration;
+import java.awt.Rectangle;
 
-    private int width;
-    private int height;
+public class Runner extends GameObject{
+
+    private Rectangle boundingRectagle;
 
     public Runner(float x, float y, int width, int height){
         this.width = width;
         this.height = height;
+        boundingRectagle = new Rectangle();
+        boundingRectagle.setSize(width, height);
 
         position = new Vector2(x, y);
         velocity = new Vector2(0, 0);
@@ -23,16 +23,19 @@ public class Runner {
 
         velocity.add(acceleration.cpy().scl(delta));
 
-        if (velocity.y > 200) {
+        if (velocity.y >= 200) {
             velocity.y = 200;
         }
 
         position.add(velocity.cpy().scl(delta));
 
+        boundingRectagle.setLocation((int)position.x, (int)position.y);
+
+
     }
 
     public void onClick() {
-        velocity.y = -140;
+        velocity.y = -300;
     }
 
     public float getX() {
@@ -43,11 +46,15 @@ public class Runner {
         return position.y;
     }
 
-    public float getWidth() {
+    public int getWidth() {
         return width;
     }
 
-    public float getHeight() {
+    public int getHeight() {
         return height;
+    }
+
+    public Rectangle getBoundingRectagle(){
+        return boundingRectagle;
     }
 }

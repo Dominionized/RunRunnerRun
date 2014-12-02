@@ -1,50 +1,55 @@
 package ca.csf.rrrhelpers;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import static com.badlogic.gdx.graphics.Texture.*;
 
 public class AssetLoader {
-    public static Texture texture;
-    public static TextureRegion bg, ground;
+    public static TextureAtlas atlas;
+    public static TextureRegion sky, ground;
 
     public static Animation runnerAnimation;
-    public static TextureRegion runner_one, runner_two;
+    public static TextureRegion runner_idle, runner_one, runner_two, runner_three, runner_four;
 
+    public static TextureRegion enemy;
+    public static TextureRegion cone;
     public static TextureRegion box;
 
     public static void load(){
-        texture = new Texture(Gdx.files.internal("sky.png"));
-        bg = new TextureRegion(texture, 0, 0, 128, 32);
-        bg.flip(false, true);
-        /*
-        texture.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 
-        //TextureRegion(texture, x, y, width, height)
-        bg = new TextureRegion(texture, 0,0,0,0);
-        bg.flip(false, true);
+        atlas = new TextureAtlas("spritesheet.txt");
 
-        ground = new TextureRegion(texture, 0,0,0,0);
+        sky = new TextureRegion(atlas.createSprite("sky"));
+        sky.flip(false, true);
+        ground = new TextureRegion(atlas.createSprite("ground"));
         ground.flip(false, true);
 
-        runner_one = new TextureRegion(texture, 0,0,0,0);
-        runner_one.flip(false, true);
-        runner_two = new TextureRegion(texture, 0,0,0,0);
-        runner_two.flip(false, true);
+        box = new TextureRegion(atlas.createSprite("box"));
+        box.flip(false, true);
 
-        TextureRegion[] runnerRun = {runner_one, runner_two};
+        runner_idle = new TextureRegion(atlas.createSprite("runner_idle"));
+
+        runner_one = new TextureRegion(atlas.createSprite("runner1"));
+        runner_two = new TextureRegion(atlas.createSprite("runner2"));
+        runner_three = new TextureRegion(atlas.createSprite("runner3"));
+        runner_four = new TextureRegion(atlas.createSprite("runner4"));
+
+        TextureRegion[] runnerRun = {runner_one, runner_two, runner_three, runner_four};
+
+        for(TextureRegion runner : runnerRun){
+            runner.flip(false, true);
+        }
+
         runnerAnimation = new Animation(0.06f, runnerRun);
         runnerAnimation.setPlayMode(Animation.PlayMode.LOOP);
 
-        box = new TextureRegion(texture, 0,0,0,0);
-        box.flip(false, true);
-        */
+        enemy = new TextureRegion(atlas.createSprite("enemy"));
+        cone = new TextureRegion(atlas.createSprite("cone"));
     }
 
     public static void dispose(){
-        texture.dispose();
+        atlas.dispose();
     }
 }

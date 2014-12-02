@@ -1,18 +1,20 @@
 package ca.csf.gameworld;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.scenes.scene2d.utils.TiledDrawable;
 
 import ca.csf.gameobjects.Runner;
 import ca.csf.rrrhelpers.AssetLoader;
 
 public class GameRenderer {
-    private static final int HEIGHT = 204;
-    private static final int WIDTH = 136;
+    private static final int HEIGHT = 320;
+    private static final int WIDTH = 480;
 
     private GameWorld myWorld;
     private OrthographicCamera camera;
@@ -44,12 +46,6 @@ public class GameRenderer {
         // Draw Background color
         shapeRenderer.setColor(55 / 255.0f, 80 / 255.0f, 100 / 255.0f, 1);
         shapeRenderer.rect(0, 0, WIDTH, HEIGHT);
-
-        // Draw Grass
-        shapeRenderer.setColor(111 / 255.0f, 186 / 255.0f, 45 / 255.0f, 1);
-        shapeRenderer.rect(0, HEIGHT-HEIGHT/4, WIDTH, HEIGHT/4);
-
-        // End ShapeRenderer
         shapeRenderer.end();
 
         // Begin SpriteBatch
@@ -58,15 +54,22 @@ public class GameRenderer {
         // This is good for performance when drawing images that do not require
         // transparency.
         batcher.disableBlending();
-        batcher.draw(AssetLoader.bg, 0, 0, WIDTH, HEIGHT*3/4);
-/*
+
+        batcher.draw(AssetLoader.sky, 0, 0, WIDTH, HEIGHT*3/4);
+        batcher.draw(AssetLoader.ground, 0, HEIGHT-HEIGHT/4, WIDTH, HEIGHT/4);
+
         batcher.enableBlending();
 
         // Pass in the runTime variable to get the current frame.
         batcher.draw(AssetLoader.runnerAnimation.getKeyFrame(runTime),
                 runner.getX(), runner.getY(), runner.getWidth(), runner.getHeight());
-*/
+
         // End SpriteBatch
         batcher.end();
+
+        shapeRenderer.begin(ShapeType.Filled);
+        shapeRenderer.setColor(Color.RED);
+        shapeRenderer.rect(runner.getBoundingRectagle().x, runner.getBoundingRectagle().y, runner.getBoundingRectagle().width, runner.getBoundingRectagle().height);
+        shapeRenderer.end();
     }
 }
