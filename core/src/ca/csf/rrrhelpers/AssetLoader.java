@@ -47,6 +47,7 @@ public class AssetLoader {
 
         runnerAnimation = new Animation(0.06f, runnerRun);
         runnerAnimation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
+        runnerAnimation.setFrameDuration(0.1f);
 
         enemy = new TextureRegion(atlas.createSprite("enemy"));
         cone = new TextureRegion(atlas.createSprite("cone"));

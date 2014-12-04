@@ -10,6 +10,7 @@ import ca.csf.rrrhelpers.AssetLoader;
 public class Runner extends GameObject{
 
     private Rectangle boundingRectagle;
+    private boolean isAlive;
 
     public Runner(float x, float y, int width, int height){
         this.width = width;
@@ -20,7 +21,6 @@ public class Runner extends GameObject{
         position = new Vector2(x, y);
         velocity = new Vector2(0, 0);
         acceleration = new Vector2(0, 981);
-
     }
 
     public void update(float delta) {
@@ -34,27 +34,25 @@ public class Runner extends GameObject{
 
     public void onClick() {
         if(velocity.y == 0) {
-            velocity.y = -400;
+            velocity.y = -300;
         }
     }
 
     public float getX() {
         return position.x;
     }
-
     public float getY() {
         return position.y;
     }
-
     public int getWidth() {
         return width;
     }
-
     public int getHeight() {
         return height;
     }
-
     public Rectangle getBoundingRectagle(){
         return boundingRectagle;
     }
+    public Boolean getIsAlive(){ return isAlive; }
+    public void setIsAlive( boolean isAlive ){ this.isAlive = isAlive; }
 }

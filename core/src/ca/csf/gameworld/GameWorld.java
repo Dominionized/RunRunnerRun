@@ -21,7 +21,7 @@ public class GameWorld {
         groundRect = new Rectangle();
         groundRect.set(0, 320-32, 480, 32);
 
-        runner = new Runner(100, 320-32-108, 54, 108);
+        runner = new Runner(100, 320-32-108, 64, 64);
 
         scrollHandler = new ScrollHandler(this);
 
@@ -34,7 +34,7 @@ public class GameWorld {
 
         if(Intersector.overlaps(runner.getBoundingRectagle(), groundRect)){
             runner.setVelocity(new Vector2(0, 0));
-            runner.setPosition(new Vector2(runner.getPosition().x, 320-32-108));
+            runner.setPosition(new Vector2(runner.getPosition().x, 320-32-64));
         }
 
     }

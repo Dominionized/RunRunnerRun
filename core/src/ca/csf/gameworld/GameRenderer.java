@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
+import ca.csf.gameobjects.Box;
 import ca.csf.gameobjects.Grass;
 import ca.csf.gameobjects.Runner;
 import ca.csf.gameobjects.ScrollHandler;
@@ -30,6 +31,8 @@ public class GameRenderer {
     private ScrollHandler scrollHandler;
     private Sky frontSky, backSky;
     private Grass frontGrass, backGrass;
+
+    private Box boxOne, boxTwo, boxThree, boxFour, boxFive;
 
     private TextureRegion sky, ground;
     private Animation runnerAnimation;
@@ -53,7 +56,6 @@ public class GameRenderer {
 
 
     private void initGameObjects() {
-
         runner = myWorld.getRunner();
         scrollHandler = myWorld.getScrollHandler();
 
@@ -62,6 +64,11 @@ public class GameRenderer {
         frontGrass = scrollHandler.getFrontGrass();
         backGrass = scrollHandler.getBackGrass();
 
+        boxOne = scrollHandler.getBox1();
+        boxTwo = scrollHandler.getBox2();
+        boxThree = scrollHandler.getBox3();
+        boxFour = scrollHandler.getBox4();
+        boxFive = scrollHandler.getBox5();
     }
 
     private void initAssets() {
@@ -91,6 +98,11 @@ public class GameRenderer {
 
         batcher.draw(AssetLoader.ground, frontGrass.getPosition().x, frontGrass.getPosition().y, frontGrass.getWidth(), frontGrass.getHeight());
         batcher.draw(AssetLoader.ground, backGrass.getPosition().x, backGrass.getPosition().y, backGrass.getWidth(), backGrass.getHeight());
+
+        batcher.draw(AssetLoader.box, boxOne.getPosition().x, boxOne.getPosition().y, boxOne.getWidth(), boxOne.getHeight());
+        batcher.draw(AssetLoader.box, boxOne.getPosition().x, boxOne.getPosition().y, boxOne.getWidth(), boxOne.getHeight());
+        batcher.draw(AssetLoader.box, boxOne.getPosition().x, boxOne.getPosition().y, boxOne.getWidth(), boxOne.getHeight());
+        batcher.draw(AssetLoader.box, boxOne.getPosition().x, boxOne.getPosition().y, boxOne.getWidth(), boxOne.getHeight());
 
         // Pass in the runTime variable to get the current frame.
         batcher.draw(runnerAnimation.getKeyFrame(runTime),
