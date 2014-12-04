@@ -4,21 +4,21 @@ filter: Linear,Linear
 repeat: none
 box
   rotate: false
-  xy: 121, 83
+  xy: 484, 2
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 cone
   rotate: false
-  xy: 139, 83
-  size: 12, 16
+  xy: 484, 20
+  size: 16, 16
   orig: 16, 16
-  offset: 2, 0
+  offset: 0, 0
   index: -1
 enemy
   rotate: false
-  xy: 2, 36
+  xy: 134, 38
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
@@ -32,49 +32,49 @@ ground
   index: -1
 hatguy
   rotate: false
-  xy: 65, 36
-  size: 14, 53
+  xy: 2, 38
+  size: 64, 64
   orig: 64, 64
-  offset: 23, 0
+  offset: 0, 0
   index: -1
 runner1
   rotate: false
-  xy: 81, 36
-  size: 18, 51
+  xy: 2, 104
+  size: 64, 64
   orig: 64, 64
-  offset: 24, 0
+  offset: 0, 0
   index: -1
 runner2
   rotate: false
-  xy: 121, 36
-  size: 36, 45
+  xy: 2, 170
+  size: 64, 64
   orig: 64, 64
-  offset: 12, 0
+  offset: 0, 0
   index: -1
 runner3
   rotate: false
-  xy: 101, 36
-  size: 18, 51
+  xy: 68, 38
+  size: 64, 64
   orig: 64, 64
-  offset: 24, 0
+  offset: 0, 0
   index: -1
 runner4
   rotate: false
-  xy: 159, 36
-  size: 35, 45
+  xy: 68, 104
+  size: 64, 64
   orig: 64, 64
-  offset: 12, 0
+  offset: 0, 0
   index: -1
 runner_idle
   rotate: false
-  xy: 36, 36
-  size: 27, 54
+  xy: 68, 170
+  size: 64, 64
   orig: 64, 64
-  offset: 19, 0
+  offset: 0, 0
   index: -1
 sky
   rotate: false
-  xy: 196, 36
+  xy: 134, 104
   size: 128, 32
   orig: 128, 32
   offset: 0, 0
