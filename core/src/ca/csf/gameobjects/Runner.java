@@ -19,14 +19,13 @@ public class Runner extends GameObject{
 
         position = new Vector2(x, y);
         velocity = new Vector2(0, 0);
-        acceleration = new Vector2(0, 460);
+        acceleration = new Vector2(0, 981);
 
     }
 
     public void update(float delta) {
 
         velocity.add(acceleration.cpy().scl(delta));
-
 
         position.add(velocity.cpy().scl(delta));
 
@@ -35,7 +34,7 @@ public class Runner extends GameObject{
 
     public void onClick() {
         if(velocity.y == 0) {
-            velocity.y = -300;
+            velocity.y = -400;
         }
     }
 

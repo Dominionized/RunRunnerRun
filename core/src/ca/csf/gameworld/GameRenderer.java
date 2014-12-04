@@ -27,8 +27,8 @@ public class GameRenderer {
 
     private Runner runner;
     private ScrollHandler scrollHandler;
-    private Grass frontGrass;
-    private Grass backGrass;
+    private Sky frontSky, backSky;
+    private Grass frontGrass, backGrass;
 
     private TextureRegion sky, ground;
     private Animation runnerAnimation;
@@ -56,6 +56,8 @@ public class GameRenderer {
         runner = myWorld.getRunner();
         scrollHandler = myWorld.getScrollHandler();
 
+        frontSky = scrollHandler.getFrontSky();
+        backSky= scrollHandler.getBackSky();
         frontGrass = scrollHandler.getFrontGrass();
         backGrass = scrollHandler.getBackGrass();
 
@@ -76,14 +78,15 @@ public class GameRenderer {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         shapeRenderer.begin(ShapeType.Filled);
-        shapeRenderer.setColor(55 / 255.0f, 80 / 255.0f, 100 / 255.0f, 1);
+        shapeRenderer.setColor(97 / 255.0f, 211 / 255.0f, 227 / 255.0f, 1);
         shapeRenderer.rect(0, 0, WIDTH, HEIGHT);
         shapeRenderer.end();
 
         // Begin SpriteBatch
         batcher.begin();
-
-        batcher.draw(AssetLoader.sky, 0, 0, WIDTH, HEIGHT - 32);
+        batcher.enableBlending();
+        batcher.draw(AssetLoader.sky, frontSky.getPosition().x, frontSky.getPosition().y, frontSky.getWidth(), frontSky.getHeight());
+        batcher.draw(AssetLoader.sky, backSky.getPosition().x, backSky.getPosition().y, backSky.getWidth(), backSky.getHeight());
 
         batcher.draw(AssetLoader.ground, frontGrass.getPosition().x, frontGrass.getPosition().y, frontGrass.getWidth(), frontGrass.getHeight());
         batcher.draw(AssetLoader.ground, backGrass.getPosition().x, backGrass.getPosition().y, backGrass.getWidth(), backGrass.getHeight());

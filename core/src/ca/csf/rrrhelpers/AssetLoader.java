@@ -23,6 +23,9 @@ public class AssetLoader {
 
         sky = new TextureRegion(atlas.createSprite("sky"));
         sky.flip(false, true);
+
+        sky.getTexture().setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+
         ground = new TextureRegion(atlas.createSprite("ground"));
         ground.flip(false, true);
 
