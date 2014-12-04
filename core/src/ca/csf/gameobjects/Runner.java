@@ -1,7 +1,10 @@
 package ca.csf.gameobjects;
 
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+
+import ca.csf.rrrhelpers.AssetLoader;
 
 
 public class Runner extends GameObject{
@@ -33,7 +36,9 @@ public class Runner extends GameObject{
     }
 
     public void onClick() {
-        velocity.y = -300;
+        if(velocity.y == 0) {
+            velocity.y = -200;
+        }
     }
 
     public float getX() {

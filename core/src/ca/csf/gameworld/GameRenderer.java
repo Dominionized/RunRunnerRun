@@ -39,25 +39,16 @@ public class GameRenderer {
         Gdx.gl.glClearColor(0,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        // Begin ShapeRenderer
         shapeRenderer.begin(ShapeType.Filled);
-
-        // Draw Background color
         shapeRenderer.setColor(55 / 255.0f, 80 / 255.0f, 100 / 255.0f, 1);
         shapeRenderer.rect(0, 0, WIDTH, HEIGHT);
         shapeRenderer.end();
 
         // Begin SpriteBatch
         batcher.begin();
-        // Disable transparency
-        // This is good for performance when drawing images that do not require
-        // transparency.
-        batcher.disableBlending();
 
         batcher.draw(AssetLoader.sky, 0, 0, WIDTH, HEIGHT-32);
         batcher.draw(AssetLoader.ground, 0, HEIGHT-32, WIDTH, 32);
-
-        batcher.enableBlending();
 
         // Pass in the runTime variable to get the current frame.
         batcher.draw(AssetLoader.runnerAnimation.getKeyFrame(runTime),
@@ -66,4 +57,7 @@ public class GameRenderer {
         // End SpriteBatch
         batcher.end();
     }
+
+    public static int getHeight(){ return HEIGHT; }
+    public static int getWidth(){ return WIDTH; }
 }
