@@ -10,6 +10,15 @@ public class ScrollHandler {
     private Grass backGrass;
     private Sky frontSky;
     private Sky backSky;
+
+    public Sky getBackSky() {
+        return backSky;
+    }
+
+    public Sky getFrontSky() {
+        return frontSky;
+    }
+
     private Box box1, box2, box3, box4, box5;
     private GameWorld gameWorld;
 
