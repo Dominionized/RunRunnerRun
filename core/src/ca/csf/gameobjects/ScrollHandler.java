@@ -8,6 +8,8 @@ public class ScrollHandler {
     private final int SCROLL_SPEED = 300;
     private Grass frontGrass;
     private Grass backGrass;
+    private Sky frontSky;
+    private Sky backSky;
     private Box box1, box2, box3, box4, box5;
     private GameWorld gameWorld;
 
@@ -18,11 +20,17 @@ public class ScrollHandler {
         frontGrass = new Grass(0, GameRenderer.getHeight() - 32, 480, 32, SCROLL_SPEED);
         backGrass = new Grass(frontGrass.getTailX(), GameRenderer.getHeight() - 32, 480, 32, SCROLL_SPEED);
 
+        frontSky = new Sky(0, 0, GameRenderer.getWidth(), GameRenderer.getHeight(), SCROLL_SPEED/2);
+        backSky = new Sky(frontSky.getTailX(), 0, GameRenderer.getWidth(), GameRenderer.getHeight(), SCROLL_SPEED/2);
+
+
     }
 
     public void update(float delta) {
         frontGrass.update(delta);
         backGrass.update(delta);
+        frontSky.update(delta);
+        backSky.update(delta);
 
         if (frontGrass.isScrolledLeft()) {
 
@@ -31,6 +39,16 @@ public class ScrollHandler {
         } else if (backGrass.isScrolledLeft()) {
 
             backGrass.reset(frontGrass.getTailX());
+
+        }
+
+        if (frontSky.isScrolledLeft()) {
+
+            frontSky.reset(backSky.getTailX());
+
+        } else if (backSky.isScrolledLeft()) {
+
+            backSky.reset(frontSky.getTailX());
 
         }
 
