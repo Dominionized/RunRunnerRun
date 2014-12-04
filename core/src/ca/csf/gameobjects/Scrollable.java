@@ -19,8 +19,13 @@ public class Scrollable extends GameObject{
 
         // If the scrollable object is no longer visible
         if (position.x + width < 0){
-            isScrolledLeft = false;
+            isScrolledLeft = true;
         }
+    }
+
+    public void reset(float newX) {
+        position.x = newX;
+        isScrolledLeft = false;
     }
 
     public boolean isScrolledLeft(){
