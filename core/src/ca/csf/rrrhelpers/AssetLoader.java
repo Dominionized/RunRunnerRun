@@ -11,7 +11,7 @@ public class AssetLoader {
     public static TextureRegion sky, ground;
 
     public static Animation runnerAnimation;
-    public static TextureRegion runner_idle, runner_one, runner_two, runner_three, runner_four;
+    public static TextureRegion runnerIdle, runnerJump, runnerOne, runnerTwo, runnerThree, runnerFour;
 
     public static TextureRegion enemy;
     public static TextureRegion cone;
@@ -29,14 +29,14 @@ public class AssetLoader {
         box = new TextureRegion(atlas.createSprite("box"));
         box.flip(false, true);
 
-        runner_idle = new TextureRegion(atlas.createSprite("runner_idle"));
+        runnerIdle = new TextureRegion(atlas.createSprite("runner_idle"));
+        //runnerJump = new TextureRegion(atlas.createSprite("runner_jump"));
+        runnerOne = new TextureRegion(atlas.createSprite("runner1"));
+        runnerTwo = new TextureRegion(atlas.createSprite("runner2"));
+        runnerThree = new TextureRegion(atlas.createSprite("runner3"));
+        runnerFour = new TextureRegion(atlas.createSprite("runner4"));
 
-        runner_one = new TextureRegion(atlas.createSprite("runner1"));
-        runner_two = new TextureRegion(atlas.createSprite("runner2"));
-        runner_three = new TextureRegion(atlas.createSprite("runner3"));
-        runner_four = new TextureRegion(atlas.createSprite("runner4"));
-
-        TextureRegion[] runnerRun = {runner_one, runner_two, runner_three, runner_four};
+        TextureRegion[] runnerRun = {runnerOne, runnerTwo, runnerThree, runnerFour};
 
         for(TextureRegion runner : runnerRun){
             runner.flip(false, true);

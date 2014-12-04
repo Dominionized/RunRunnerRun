@@ -4,7 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
@@ -21,6 +23,13 @@ public class GameRenderer {
 
     private SpriteBatch batcher;
 
+    private Runner runner;
+
+    private TextureRegion sky, ground;
+    private Animation runnerAnimation;
+    private TextureRegion runnerIdle, runnerJump;
+    private TextureRegion box, enemy;
+
     public GameRenderer(GameWorld world){
         myWorld = world;
         camera = new OrthographicCamera();
@@ -31,11 +40,27 @@ public class GameRenderer {
 
         shapeRenderer = new ShapeRenderer();
         shapeRenderer.setProjectionMatrix(camera.combined);
+
+        initGameObjects();
+        initAssets();
+    }
+
+
+    private void initGameObjects(){
+        runner = myWorld.getRunner();
+    }
+
+    private void initAssets(){
+        sky = AssetLoader.sky;
+        ground = AssetLoader.ground;
+        runnerAnimation = AssetLoader.runnerAnimation;
+        runnerIdle = AssetLoader.runnerIdle;
+        runnerJump = AssetLoader.runnerJump;
+        box = AssetLoader.box;
+        enemy = AssetLoader.enemy;
     }
 
     public void render(float runTime){
-        Runner runner = myWorld.getRunner();
-
         Gdx.gl.glClearColor(0,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -51,7 +76,7 @@ public class GameRenderer {
         batcher.draw(AssetLoader.ground, 0, HEIGHT-32, WIDTH, 32);
 
         // Pass in the runTime variable to get the current frame.
-        batcher.draw(AssetLoader.runnerAnimation.getKeyFrame(runTime),
+        batcher.draw(runnerAnimation.getKeyFrame(runTime),
                 runner.getX(), runner.getY(), runner.getWidth(), runner.getHeight());
 
         // End SpriteBatch

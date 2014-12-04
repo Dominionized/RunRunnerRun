@@ -26,9 +26,6 @@ public class Runner extends GameObject{
 
         velocity.add(acceleration.cpy().scl(delta));
 
-        if (velocity.y >= 200) {
-            velocity.y = 200;
-        }
 
         position.add(velocity.cpy().scl(delta));
 
@@ -37,7 +34,7 @@ public class Runner extends GameObject{
 
     public void onClick() {
         if(velocity.y == 0) {
-            velocity.y = -200;
+            velocity.y = -300;
         }
     }
 

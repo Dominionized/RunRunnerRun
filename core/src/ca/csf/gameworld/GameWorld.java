@@ -7,7 +7,6 @@ import com.badlogic.gdx.math.Vector2;
 import ca.csf.gameobjects.Runner;
 
 public class GameWorld {
-
     private Runner runner;
     private Rectangle groundRect;
 
