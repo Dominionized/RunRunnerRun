@@ -29,8 +29,8 @@ public class ScrollHandler {
         frontGrass = new Grass(0, GameRenderer.getHeight() - 32, 480, 32, SCROLL_SPEED);
         backGrass = new Grass(frontGrass.getTailX(), GameRenderer.getHeight() - 32, 480, 32, SCROLL_SPEED);
 
-        frontSky = new Sky(0, 0, GameRenderer.getWidth(), 64, SCROLL_SPEED/3);
-        backSky = new Sky(frontSky.getTailX(), 0, GameRenderer.getWidth(), 64, SCROLL_SPEED/3);
+        frontSky = new Sky(0, 64, GameRenderer.getWidth(), 128, SCROLL_SPEED/8);
+        backSky = new Sky(frontSky.getTailX(), 64, GameRenderer.getWidth(), 128, SCROLL_SPEED/8);
 
 
     }
