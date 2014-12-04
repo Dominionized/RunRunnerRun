@@ -17,6 +17,8 @@ public abstract class GameObject {
         this.acceleration = acceleration;
     }
 
+    public void setVelocity(Vector2 velocity){ this.velocity = velocity; }
+
     public int getWidth() {
         return width;
     }
