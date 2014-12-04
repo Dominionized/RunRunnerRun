@@ -30,8 +30,6 @@ public class Runner extends GameObject{
         position.add(velocity.cpy().scl(delta));
 
         boundingRectagle.setPosition(position.x, position.y);
-
-
     }
 
     public void onClick() {

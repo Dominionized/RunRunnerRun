@@ -65,10 +65,5 @@ public class GameRenderer {
 
         // End SpriteBatch
         batcher.end();
-
-        shapeRenderer.begin(ShapeType.Filled);
-        shapeRenderer.setColor(Color.RED);
-        shapeRenderer.rect(runner.getBoundingRectagle().x, runner.getBoundingRectagle().y, runner.getBoundingRectagle().width, runner.getBoundingRectagle().height);
-        shapeRenderer.end();
     }
 }
