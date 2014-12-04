@@ -100,9 +100,10 @@ public class GameRenderer {
         batcher.draw(AssetLoader.ground, backGrass.getPosition().x, backGrass.getPosition().y, backGrass.getWidth(), backGrass.getHeight());
 
         batcher.draw(AssetLoader.box, boxOne.getPosition().x, boxOne.getPosition().y, boxOne.getWidth(), boxOne.getHeight());
-        batcher.draw(AssetLoader.box, boxOne.getPosition().x, boxOne.getPosition().y, boxOne.getWidth(), boxOne.getHeight());
-        batcher.draw(AssetLoader.box, boxOne.getPosition().x, boxOne.getPosition().y, boxOne.getWidth(), boxOne.getHeight());
-        batcher.draw(AssetLoader.box, boxOne.getPosition().x, boxOne.getPosition().y, boxOne.getWidth(), boxOne.getHeight());
+        batcher.draw(AssetLoader.box, boxTwo.getPosition().x, boxTwo.getPosition().y, boxTwo.getWidth(), boxTwo.getHeight());
+        batcher.draw(AssetLoader.box, boxThree.getPosition().x, boxThree.getPosition().y, boxThree.getWidth(), boxThree.getHeight());
+        batcher.draw(AssetLoader.box, boxFour.getPosition().x, boxFour.getPosition().y, boxFour.getWidth(), boxFour.getHeight());
+        batcher.draw(AssetLoader.box, boxFive.getPosition().x, boxFive.getPosition().y, boxFive.getWidth(), boxFive.getHeight());
 
         // Pass in the runTime variable to get the current frame.
         batcher.draw(runnerAnimation.getKeyFrame(runTime),
