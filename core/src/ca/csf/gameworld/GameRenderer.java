@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import ca.csf.gameobjects.Grass;
 import ca.csf.gameobjects.Runner;
 import ca.csf.gameobjects.ScrollHandler;
+import ca.csf.gameobjects.Sky;
 import ca.csf.rrrhelpers.AssetLoader;
 
 public class GameRenderer {
