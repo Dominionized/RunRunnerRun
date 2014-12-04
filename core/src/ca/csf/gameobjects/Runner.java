@@ -20,6 +20,7 @@ public class Runner extends GameObject{
         position = new Vector2(x, y);
         velocity = new Vector2(0, 0);
         acceleration = new Vector2(0, 460);
+
     }
 
     public void update(float delta) {

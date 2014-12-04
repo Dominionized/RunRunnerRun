@@ -5,7 +5,7 @@ import ca.csf.gameworld.GameWorld;
 
 public class ScrollHandler {
 
-    private final int SCROLL_SPEED = 200;
+    private final int SCROLL_SPEED = 300;
     private Grass frontGrass;
     private Grass backGrass;
     private Box box1, box2, box3, box4, box5;
