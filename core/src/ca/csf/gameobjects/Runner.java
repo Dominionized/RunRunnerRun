@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import ca.csf.rrrhelpers.AssetLoader;
 
 
-public class Runner extends GameObject{
+public class Runner extends GameObject implements Killable{
 
     private Rectangle boundingRectagle;
     private boolean isAlive;
@@ -56,4 +56,9 @@ public class Runner extends GameObject{
     }
     public Boolean getIsAlive(){ return isAlive; }
     public void setIsAlive( boolean isAlive ){ this.isAlive = isAlive; }
+
+    @Override
+    public void onKilled() {
+
+    }
 }
