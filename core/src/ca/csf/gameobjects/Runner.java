@@ -21,6 +21,7 @@ public class Runner extends GameObject{
         position = new Vector2(x, y);
         velocity = new Vector2(0, 0);
         acceleration = new Vector2(0, 981);
+        AssetLoader.gameMusic.loop();
     }
 
     public void update(float delta) {

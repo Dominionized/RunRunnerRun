@@ -1,5 +1,7 @@
 package ca.csf.rrrhelpers;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -16,6 +18,8 @@ public class AssetLoader {
     public static TextureRegion enemy;
     public static TextureRegion cone;
     public static TextureRegion box;
+
+    public static Sound gameMusic;
 
     public static void load(){
 
@@ -38,6 +42,8 @@ public class AssetLoader {
         runnerTwo = new TextureRegion(atlas.createSprite("runner2"));
         runnerThree = new TextureRegion(atlas.createSprite("runner3"));
         runnerFour = new TextureRegion(atlas.createSprite("runner4"));
+
+        gameMusic = Gdx.audio.newSound(Gdx.files.internal("rrrGameSong.mp3"));
 
         TextureRegion[] runnerRun = {runnerOne, runnerTwo, runnerThree, runnerFour};
 
