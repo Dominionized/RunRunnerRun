@@ -32,6 +32,13 @@ public class ScrollHandler {
         frontSky = new Sky(0, 64, GameRenderer.getWidth(), 128, SCROLL_SPEED/8);
         backSky = new Sky(frontSky.getTailX(), 64, GameRenderer.getWidth(), 128, SCROLL_SPEED/8);
 
+       /* float boxHeight = GameRenderer.getHeight() - gameWorld.getGroundRect().getHeight();
+        box1 = new Box();
+        box2 = new Box();
+        box3 = new Box();
+        box4 = new Box();
+        box5 = new Box();*/
+
 
     }
 

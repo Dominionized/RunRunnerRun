@@ -10,6 +10,11 @@ import ca.csf.gameobjects.ScrollHandler;
 
 public class GameWorld {
     private Runner runner;
+
+    public Rectangle getGroundRect() {
+        return groundRect;
+    }
+
     private Rectangle groundRect;
     private ScrollHandler scrollHandler;
 
