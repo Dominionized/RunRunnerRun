@@ -14,7 +14,14 @@ public class Box extends Scrollable{
     }
 
     public void update(float delta){
+        super.update(delta);
         boundingRectangle.setPosition(position);
+    }
+
+    public void reset(float newX) {
+
+        super.reset(newX);
+
     }
 
 
