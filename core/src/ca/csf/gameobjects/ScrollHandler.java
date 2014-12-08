@@ -32,11 +32,11 @@ public class ScrollHandler {
         frontSky = new Sky(0, 64, GameRenderer.getWidth(), 128, SCROLL_SPEED/8);
         backSky = new Sky(frontSky.getTailX(), 64, GameRenderer.getWidth(), 128, SCROLL_SPEED/8);
 
-        box1 = new Box(340, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
-        box2 = new Box(box1.getTailX(), GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
-        box3 = new Box(box2.getTailX(), GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
-        box4 = new Box(box3.getTailX(), GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
-        box5 = new Box(box4.getTailX(), GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
+        box1 = new Box(448, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
+        box2 = new Box(box1.getTailX() +100, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
+        box3 = new Box(box2.getTailX()+100, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
+        box4 = new Box(box3.getTailX()+100, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
+        box5 = new Box(box4.getTailX()+100, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
 
 
     }
@@ -74,52 +74,32 @@ public class ScrollHandler {
 
         if (box1.isScrolledLeft()) {
 
-            box1.reset(340);
-
-        } else if (box2.isScrolledLeft()) {
-
-            box2.reset(box1.getTailX());
+            box1.reset(448);
 
         }
 
         if (box2.isScrolledLeft()) {
 
-            box2.reset(box1.getTailX());
-
-        } else if (box1.isScrolledLeft()) {
-
-            box2.reset(box2.getTailX());
+            box2.reset(448);
 
         }
 
 
         if (box3.isScrolledLeft()) {
 
-            box3.reset(box2.getTailX());
-
-        } else if (box3.isScrolledLeft()) {
-
-            box3.reset(box2.getTailX());
+            box3.reset(448);
 
         }
 
         if (box4.isScrolledLeft()) {
 
-            box4.reset(box3.getTailX());
-
-        } else if (box4.isScrolledLeft()) {
-
-            box4.reset(box3.getTailX());
+            box4.reset(448);
 
         }
 
         if (box5.isScrolledLeft()) {
 
-            box5.reset(box4.getTailX());
-
-        } else if (box5.isScrolledLeft()) {
-
-            box5.reset(box4.getTailX());
+            box5.reset(448);
 
         }
 
