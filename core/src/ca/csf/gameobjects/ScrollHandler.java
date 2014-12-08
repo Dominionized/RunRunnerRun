@@ -6,6 +6,7 @@ import ca.csf.gameworld.GameWorld;
 public class ScrollHandler {
 
     private final int SCROLL_SPEED = 300;
+    private final int BOX_GAP = 200;
     private Grass frontGrass;
     private Grass backGrass;
     private Sky frontSky;
@@ -33,10 +34,10 @@ public class ScrollHandler {
         backSky = new Sky(frontSky.getTailX(), 64, GameRenderer.getWidth(), 128, SCROLL_SPEED/8);
 
         box1 = new Box(448, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
-        box2 = new Box(box1.getTailX() +200, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
-        box3 = new Box(box2.getTailX()+200, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
-        box4 = new Box(box3.getTailX()+200, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
-        box5 = new Box(box4.getTailX()+200, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
+        box2 = new Box(box1.getTailX() +BOX_GAP, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
+        box3 = new Box(box2.getTailX()+BOX_GAP, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
+        box4 = new Box(box3.getTailX()+BOX_GAP, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
+        box5 = new Box(box4.getTailX()+BOX_GAP, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
 
 
     }
@@ -74,23 +75,23 @@ public class ScrollHandler {
 
         if (box1.isScrolledLeft()) {
 
-            box1.reset(box5.getTailX() + 200);
+            box1.reset(box5.getTailX() + BOX_GAP);
 
         } else if (box2.isScrolledLeft()) {
 
-            box2.reset(box1.getTailX() + 200);
+            box2.reset(box1.getTailX() + BOX_GAP);
 
         }else if (box3.isScrolledLeft()) {
 
-            box3.reset(box2.getTailX() + 200);
+            box3.reset(box2.getTailX() + BOX_GAP);
 
         }else if (box4.isScrolledLeft()) {
 
-            box4.reset(box3.getTailX() + 200);
+            box4.reset(box3.getTailX() + BOX_GAP);
 
         }else if (box5.isScrolledLeft()) {
 
-            box5.reset(box4.getTailX() + 200);
+            box5.reset(box4.getTailX() + BOX_GAP);
         }
 
 
