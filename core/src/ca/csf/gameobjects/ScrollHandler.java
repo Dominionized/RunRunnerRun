@@ -32,6 +32,8 @@ public class ScrollHandler {
         frontSky = new Sky(0, 64, GameRenderer.getWidth(), 128, SCROLL_SPEED/8);
         backSky = new Sky(frontSky.getTailX(), 64, GameRenderer.getWidth(), 128, SCROLL_SPEED/8);
 
+        box1 = new Box(240, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
+
 
     }
 
@@ -40,6 +42,7 @@ public class ScrollHandler {
         backGrass.update(delta);
         frontSky.update(delta);
         backSky.update(delta);
+        box1.update(delta);
 
         if (frontGrass.isScrolledLeft()) {
 
@@ -58,6 +61,16 @@ public class ScrollHandler {
         } else if (backSky.isScrolledLeft()) {
 
             backSky.reset(frontSky.getTailX());
+
+        }
+
+        if (box1.isScrolledLeft()) {
+
+            box1.reset(box1.getTailX());
+
+        } else if (box1.isScrolledLeft()) {
+
+            box1.reset(box1.getTailX());
 
         }
 
