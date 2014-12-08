@@ -33,10 +33,10 @@ public class ScrollHandler {
         backSky = new Sky(frontSky.getTailX(), 64, GameRenderer.getWidth(), 128, SCROLL_SPEED/8);
 
         box1 = new Box(448, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
-        box2 = new Box(box1.getTailX() +100, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
-        box3 = new Box(box2.getTailX()+100, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
-        box4 = new Box(box3.getTailX()+100, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
-        box5 = new Box(box4.getTailX()+100, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
+        box2 = new Box(box1.getTailX() +200, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
+        box3 = new Box(box2.getTailX()+200, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
+        box4 = new Box(box3.getTailX()+200, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
+        box5 = new Box(box4.getTailX()+200, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
 
 
     }
@@ -74,34 +74,26 @@ public class ScrollHandler {
 
         if (box1.isScrolledLeft()) {
 
-            box1.reset(448);
+            box1.reset(box5.getTailX() + 200);
 
+        } else if (box2.isScrolledLeft()) {
+
+            box2.reset(box1.getTailX() + 200);
+
+        }else if (box3.isScrolledLeft()) {
+
+            box3.reset(box2.getTailX() + 200);
+
+        }else if (box4.isScrolledLeft()) {
+
+            box4.reset(box3.getTailX() + 200);
+
+        }else if (box5.isScrolledLeft()) {
+
+            box5.reset(box4.getTailX() + 200);
         }
 
-        if (box2.isScrolledLeft()) {
 
-            box2.reset(448);
-
-        }
-
-
-        if (box3.isScrolledLeft()) {
-
-            box3.reset(448);
-
-        }
-
-        if (box4.isScrolledLeft()) {
-
-            box4.reset(448);
-
-        }
-
-        if (box5.isScrolledLeft()) {
-
-            box5.reset(448);
-
-        }
 
 
 
@@ -135,7 +127,10 @@ public class ScrollHandler {
         return box5;
     }
 
-
+    public boolean collides(Runner runner) {
+        return (box1.collides(runner) || box2.collides(runner) || box3
+                .collides(runner));
+    }
 
 
 }
