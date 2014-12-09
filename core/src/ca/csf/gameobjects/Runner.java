@@ -9,14 +9,16 @@ import ca.csf.rrrhelpers.AssetLoader;
 
 public class Runner extends GameObject implements Killable{
 
+    private static final int JUMP_HEIGHT = 400;
     private Rectangle boundingRectagle;
     private boolean isAlive;
+    private boolean isJumping;
 
     public Runner(float x, float y, int width, int height){
         this.width = width;
         this.height = height;
         boundingRectagle = new Rectangle();
-        boundingRectagle.setSize(width, height);
+        boundingRectagle.setSize(16, height);
 
         position = new Vector2(x, y);
         velocity = new Vector2(0, 0);
@@ -30,13 +32,15 @@ public class Runner extends GameObject implements Killable{
 
         position.add(velocity.cpy().scl(delta));
 
-        boundingRectagle.setPosition(position.x, position.y);
+        boundingRectagle.setPosition(position.x + 24, position.y);
     }
 
     public void onClick() {
         if(velocity.y == 0) {
-            velocity.y = -300;
+            velocity.y = -JUMP_HEIGHT;
+            isJumping = true;
         }
+
     }
 
     public float getX() {
@@ -56,6 +60,8 @@ public class Runner extends GameObject implements Killable{
     }
     public Boolean getIsAlive(){ return isAlive; }
     public void setIsAlive( boolean isAlive ){ this.isAlive = isAlive; }
+    public Boolean getIsJumping(){return this.isJumping;}
+    public void setIsJumping(boolean isJumping){ this.isJumping = isJumping; }
 
     @Override
     public void onKilled() {

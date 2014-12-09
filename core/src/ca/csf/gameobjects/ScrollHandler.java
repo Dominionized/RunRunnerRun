@@ -2,6 +2,7 @@ package ca.csf.gameobjects;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import ca.csf.gameworld.GameRenderer;
 import ca.csf.gameworld.GameWorld;
@@ -39,12 +40,15 @@ public class ScrollHandler {
 
         boxList = new ArrayList<Box>();
 
+        Random random = new Random();
+
         for (int i = 0; i < NBR_BOX; ++i){
-            float posX = 446;
+            int gapToAdd = random.nextInt(300);
+            float posX = 446 + gapToAdd;
             if(i > 0){
-                posX = boxList.get(i-1).getTailX() + BOX_GAP;
+                posX = boxList.get(i-1).getTailX() + BOX_GAP + gapToAdd;
             }
-            boxList.add(new Box(posX, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED ));
+            boxList.add(new Box(posX, GameRenderer.getHeight()-64, 32, 32, SCROLL_SPEED ));
         }
 
     }
@@ -59,28 +63,30 @@ public class ScrollHandler {
         for(Box box : boxList){
             box.update(delta);
 
-            float posX = BOX_GAP;
+            Random random = new Random();
+            float posX = BOX_GAP + random.nextInt(400);
             if(i == 0){
                posX += boxList.get(boxList.size()-1).getTailX();
             } else {
                posX += boxList.get(i-1).getTailX();
             }
 
+            int size = random.nextInt(32)+32;
+
             if(box.isScrolledLeft()){
                 box.reset(posX);
+                box.setWidth(size);
+                box.setHeight(size);
+                box.position.y = GameRenderer.getHeight() - gameWorld.getGroundRect().getHeight() - size;
             }
 
             i++;
         }
 
         if (frontGrass.isScrolledLeft()) {
-
             frontGrass.reset(backGrass.getTailX());
-
         } else if (backGrass.isScrolledLeft()) {
-
             backGrass.reset(frontGrass.getTailX());
-
         }
 
         if (frontSky.isScrolledLeft()) {

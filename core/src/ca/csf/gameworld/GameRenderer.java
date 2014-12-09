@@ -1,7 +1,6 @@
 package ca.csf.gameworld;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -88,6 +87,7 @@ public class GameRenderer {
         shapeRenderer.rect(0, 0, WIDTH, HEIGHT);
         shapeRenderer.end();
 
+
         // Begin SpriteBatch
 
         batcher.begin();
@@ -102,12 +102,22 @@ public class GameRenderer {
             batcher.draw(AssetLoader.box, box.getPosition().x, box.getPosition().y, box.getWidth(), box.getHeight());
         }
 
-        // Pass in the runTime variable to get the current frame.
-        batcher.draw(runnerAnimation.getKeyFrame(runTime),
-                runner.getX(), runner.getY(), runner.getWidth(), runner.getHeight());
+        if(runner.getIsJumping()){
+            batcher.draw(runnerJump,
+                    runner.getX(), runner.getY(), runner.getWidth(), runner.getHeight());
+        } else {
+            batcher.draw(runnerAnimation.getKeyFrame(runTime),
+                    runner.getX(), runner.getY(), runner.getWidth(), runner.getHeight());
+        }
 
         // End SpriteBatch
         batcher.end();
+
+
+        shapeRenderer.begin(ShapeType.Line);
+        shapeRenderer.setColor(0 / 255.0f, 0 / 255.0f, 0 / 255.0f, 1);
+        shapeRenderer.rect(runner.getBoundingRectagle().getX(), runner.getBoundingRectagle().getY(), runner.getBoundingRectagle().getWidth(), runner.getBoundingRectagle().getHeight());
+        shapeRenderer.end();
     }
 
     public static int getHeight() {

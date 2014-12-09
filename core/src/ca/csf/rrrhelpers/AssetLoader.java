@@ -37,13 +37,15 @@ public class AssetLoader {
         box.flip(false, true);
 
         runnerIdle = new TextureRegion(atlas.createSprite("runner_idle"));
-        //runnerJump = new TextureRegion(atlas.createSprite("runner_jump"));
+        runnerJump = new TextureRegion(atlas.createSprite("runner_jump"));
         runnerOne = new TextureRegion(atlas.createSprite("runner1"));
         runnerTwo = new TextureRegion(atlas.createSprite("runner2"));
         runnerThree = new TextureRegion(atlas.createSprite("runner3"));
         runnerFour = new TextureRegion(atlas.createSprite("runner4"));
 
         gameMusic = Gdx.audio.newSound(Gdx.files.internal("rrrGameSong.mp3"));
+
+        runnerJump.flip(false, true);
 
         TextureRegion[] runnerRun = {runnerOne, runnerTwo, runnerThree, runnerFour};
 

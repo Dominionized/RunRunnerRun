@@ -11,6 +11,11 @@ import ca.csf.gameobjects.ScrollHandler;
 
 public class GameWorld {
     private Runner runner;
+
+    public Rectangle getGroundRect() {
+        return groundRect;
+    }
+
     private Rectangle groundRect;
     private ScrollHandler scrollHandler;
 
@@ -33,6 +38,7 @@ public class GameWorld {
         scrollHandler.update(delta);
 
         if(Intersector.overlaps(runner.getBoundingRectagle(), groundRect)){
+            runner.setIsJumping(false);
             runner.setVelocity(new Vector2(0, 0));
             runner.setPosition(new Vector2(runner.getPosition().x, 320-32-64));
         }
