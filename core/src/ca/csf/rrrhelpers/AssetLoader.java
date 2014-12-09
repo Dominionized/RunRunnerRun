@@ -1,5 +1,7 @@
 package ca.csf.rrrhelpers;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -17,12 +19,17 @@ public class AssetLoader {
     public static TextureRegion cone;
     public static TextureRegion box;
 
+    public static Sound gameMusic;
+
     public static void load(){
 
         atlas = new TextureAtlas("spritesheet.txt");
 
         sky = new TextureRegion(atlas.createSprite("sky"));
         sky.flip(false, true);
+
+        sky.getTexture().setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+
         ground = new TextureRegion(atlas.createSprite("ground"));
         ground.flip(false, true);
 
@@ -36,6 +43,8 @@ public class AssetLoader {
         runnerThree = new TextureRegion(atlas.createSprite("runner3"));
         runnerFour = new TextureRegion(atlas.createSprite("runner4"));
 
+        gameMusic = Gdx.audio.newSound(Gdx.files.internal("rrrGameSong.mp3"));
+
         TextureRegion[] runnerRun = {runnerOne, runnerTwo, runnerThree, runnerFour};
 
         for(TextureRegion runner : runnerRun){
@@ -43,7 +52,8 @@ public class AssetLoader {
         }
 
         runnerAnimation = new Animation(0.06f, runnerRun);
-        runnerAnimation.setPlayMode(Animation.PlayMode.LOOP);
+        runnerAnimation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
+        runnerAnimation.setFrameDuration(0.1f);
 
         enemy = new TextureRegion(atlas.createSprite("enemy"));
         cone = new TextureRegion(atlas.createSprite("cone"));

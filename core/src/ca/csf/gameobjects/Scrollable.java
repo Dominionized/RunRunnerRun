@@ -8,7 +8,7 @@ public class Scrollable extends GameObject{
 
     public Scrollable(float x, float y, int width, int height, float scrollSpeed) {
         this.position = new Vector2(x,y);
-        this.velocity = new Vector2(scrollSpeed, 0);
+        this.velocity = new Vector2(-scrollSpeed, 0);
         this.width = width;
         this.height = height;
         isScrolledLeft = false;
@@ -19,8 +19,13 @@ public class Scrollable extends GameObject{
 
         // If the scrollable object is no longer visible
         if (position.x + width < 0){
-            isScrolledLeft = false;
+            isScrolledLeft = true;
         }
+    }
+
+    public void reset(float newX) {
+        position.x = newX;
+        isScrolledLeft = false;
     }
 
     public boolean isScrolledLeft(){

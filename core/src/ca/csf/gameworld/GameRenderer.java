@@ -10,7 +10,13 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
+import java.util.List;
+
+import ca.csf.gameobjects.Box;
+import ca.csf.gameobjects.Grass;
 import ca.csf.gameobjects.Runner;
+import ca.csf.gameobjects.ScrollHandler;
+import ca.csf.gameobjects.Sky;
 import ca.csf.rrrhelpers.AssetLoader;
 
 public class GameRenderer {
@@ -24,13 +30,18 @@ public class GameRenderer {
     private SpriteBatch batcher;
 
     private Runner runner;
+    private ScrollHandler scrollHandler;
+    private Sky frontSky, backSky;
+    private Grass frontGrass, backGrass;
+
+    private List<Box> boxList;
 
     private TextureRegion sky, ground;
     private Animation runnerAnimation;
     private TextureRegion runnerIdle, runnerJump;
     private TextureRegion box, enemy;
 
-    public GameRenderer(GameWorld world){
+    public GameRenderer(GameWorld world) {
         myWorld = world;
         camera = new OrthographicCamera();
         camera.setToOrtho(true, WIDTH, HEIGHT);
@@ -46,11 +57,19 @@ public class GameRenderer {
     }
 
 
-    private void initGameObjects(){
+    private void initGameObjects() {
         runner = myWorld.getRunner();
+        scrollHandler = myWorld.getScrollHandler();
+
+        frontSky = scrollHandler.getFrontSky();
+        backSky= scrollHandler.getBackSky();
+        frontGrass = scrollHandler.getFrontGrass();
+        backGrass = scrollHandler.getBackGrass();
+
+        boxList = scrollHandler.getBoxList();
     }
 
-    private void initAssets(){
+    private void initAssets() {
         sky = AssetLoader.sky;
         ground = AssetLoader.ground;
         runnerAnimation = AssetLoader.runnerAnimation;
@@ -60,20 +79,28 @@ public class GameRenderer {
         enemy = AssetLoader.enemy;
     }
 
-    public void render(float runTime){
-        Gdx.gl.glClearColor(0,0,0,1);
+    public void render(float runTime) {
+        Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         shapeRenderer.begin(ShapeType.Filled);
-        shapeRenderer.setColor(55 / 255.0f, 80 / 255.0f, 100 / 255.0f, 1);
+        shapeRenderer.setColor(97 / 255.0f, 211 / 255.0f, 227 / 255.0f, 1);
         shapeRenderer.rect(0, 0, WIDTH, HEIGHT);
         shapeRenderer.end();
 
         // Begin SpriteBatch
-        batcher.begin();
 
-        batcher.draw(AssetLoader.sky, 0, 0, WIDTH, HEIGHT-32);
-        batcher.draw(AssetLoader.ground, 0, HEIGHT-32, WIDTH, 32);
+        batcher.begin();
+        batcher.enableBlending();
+        batcher.draw(AssetLoader.sky, frontSky.getPosition().x, frontSky.getPosition().y, frontSky.getWidth(), frontSky.getHeight());
+        batcher.draw(AssetLoader.sky, backSky.getPosition().x, backSky.getPosition().y, backSky.getWidth(), backSky.getHeight());
+
+        batcher.draw(AssetLoader.ground, frontGrass.getPosition().x, frontGrass.getPosition().y, frontGrass.getWidth(), frontGrass.getHeight());
+        batcher.draw(AssetLoader.ground, backGrass.getPosition().x, backGrass.getPosition().y, backGrass.getWidth(), backGrass.getHeight());
+
+        for(Box box : boxList){
+            batcher.draw(AssetLoader.box, box.getPosition().x, box.getPosition().y, box.getWidth(), box.getHeight());
+        }
 
         // Pass in the runTime variable to get the current frame.
         batcher.draw(runnerAnimation.getKeyFrame(runTime),
@@ -83,6 +110,11 @@ public class GameRenderer {
         batcher.end();
     }
 
-    public static int getHeight(){ return HEIGHT; }
-    public static int getWidth(){ return WIDTH; }
+    public static int getHeight() {
+        return HEIGHT;
+    }
+
+    public static int getWidth() {
+        return WIDTH;
+    }
 }
