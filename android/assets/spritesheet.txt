@@ -4,14 +4,14 @@ filter: Linear,Linear
 repeat: none
 box
   rotate: false
-  xy: 584, 36
-  size: 16, 16
-  orig: 16, 16
+  xy: 398, 2
+  size: 32, 32
+  orig: 32, 32
   offset: 0, 0
   index: -1
 cone
   rotate: false
-  xy: 584, 54
+  xy: 584, 36
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
