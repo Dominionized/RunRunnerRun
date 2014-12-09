@@ -59,6 +59,7 @@ public class Runner extends GameObject implements Killable{
 
     @Override
     public void onKilled() {
-
+        this.isAlive = false;
+        System.out.println("touch");
     }
 }

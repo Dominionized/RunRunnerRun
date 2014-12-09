@@ -1,10 +1,9 @@
 package ca.csf.gameobjects;
 
-import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 
-public class Box extends Scrollable{
 
+public class Box extends Scrollable{
 
     private Rectangle boundingRectangle;
 
@@ -25,14 +24,8 @@ public class Box extends Scrollable{
 
     }
 
-    public boolean collides(Runner runner) {
-        if (position.x < runner.getX() + runner.getWidth()) {
-            return (Intersector.overlaps(runner.getBoundingRectagle(), boundingRectangle)
-                    || Intersector.overlaps(runner.getBoundingRectagle(), boundingRectangle)
-                    || Intersector.overlaps(runner.getBoundingRectagle(), boundingRectangle) || Intersector
-                    .overlaps(runner.getBoundingRectagle(), boundingRectangle));
-        }
-        return false;
+    public Rectangle getBoundingRectangle(){
+        return this.boundingRectangle;
     }
 
 

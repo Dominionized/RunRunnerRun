@@ -1,12 +1,16 @@
 package ca.csf.gameobjects;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ca.csf.gameworld.GameRenderer;
 import ca.csf.gameworld.GameWorld;
 
 public class ScrollHandler {
 
     private final int SCROLL_SPEED = 300;
-    private final int BOX_GAP = 200;
+    private final int BOX_GAP = 175;
+    private final int NBR_BOX = 3;
     private Grass frontGrass;
     private Grass backGrass;
     private Sky frontSky;
@@ -20,7 +24,7 @@ public class ScrollHandler {
         return frontSky;
     }
 
-    private Box box1, box2, box3, box4, box5;
+    private List<Box> boxList;
     private GameWorld gameWorld;
 
     public ScrollHandler(GameWorld gameWorld) {
@@ -33,12 +37,15 @@ public class ScrollHandler {
         frontSky = new Sky(0, 64, GameRenderer.getWidth(), 128, SCROLL_SPEED/8);
         backSky = new Sky(frontSky.getTailX(), 64, GameRenderer.getWidth(), 128, SCROLL_SPEED/8);
 
-        box1 = new Box(448, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
-        box2 = new Box(box1.getTailX() +BOX_GAP, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
-        box3 = new Box(box2.getTailX()+BOX_GAP, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
-        box4 = new Box(box3.getTailX()+BOX_GAP, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
-        box5 = new Box(box4.getTailX()+BOX_GAP, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED );
+        boxList = new ArrayList<Box>();
 
+        for (int i = 0; i < NBR_BOX; ++i){
+            float posX = 446;
+            if(i > 0){
+                posX = boxList.get(i-1).getTailX() + BOX_GAP;
+            }
+            boxList.add(new Box(posX, GameRenderer.getHeight() -48, 16, 16, SCROLL_SPEED ));
+        }
 
     }
 
@@ -47,11 +54,24 @@ public class ScrollHandler {
         backGrass.update(delta);
         frontSky.update(delta);
         backSky.update(delta);
-        box1.update(delta);
-        box2.update(delta);
-        box3.update(delta);
-        box4.update(delta);
-        box5.update(delta);
+
+        int i = 0;
+        for(Box box : boxList){
+            box.update(delta);
+
+            float posX = BOX_GAP;
+            if(i == 0){
+               posX += boxList.get(boxList.size()-1).getTailX();
+            } else {
+               posX += boxList.get(i-1).getTailX();
+            }
+
+            if(box.isScrolledLeft()){
+                box.reset(posX);
+            }
+
+            i++;
+        }
 
         if (frontGrass.isScrolledLeft()) {
 
@@ -73,31 +93,6 @@ public class ScrollHandler {
 
         }
 
-        if (box1.isScrolledLeft()) {
-
-            box1.reset(box5.getTailX() + BOX_GAP);
-
-        } else if (box2.isScrolledLeft()) {
-
-            box2.reset(box1.getTailX() + BOX_GAP);
-
-        }else if (box3.isScrolledLeft()) {
-
-            box3.reset(box2.getTailX() + BOX_GAP);
-
-        }else if (box4.isScrolledLeft()) {
-
-            box4.reset(box3.getTailX() + BOX_GAP);
-
-        }else if (box5.isScrolledLeft()) {
-
-            box5.reset(box4.getTailX() + BOX_GAP);
-        }
-
-
-
-
-
     }
 
     public Grass getFrontGrass() {
@@ -108,30 +103,8 @@ public class ScrollHandler {
         return backGrass;
     }
 
-    public Box getBox1() {
-        return box1;
+    public List<Box> getBoxList() {
+        return boxList;
     }
-
-    public Box getBox2() {
-        return box2;
-    }
-
-    public Box getBox3() {
-        return box3;
-    }
-
-    public Box getBox4() {
-        return box4;
-    }
-
-    public Box getBox5() {
-        return box5;
-    }
-
-    public boolean collides(Runner runner) {
-        return (box1.collides(runner) || box2.collides(runner) || box3
-                .collides(runner));
-    }
-
 
 }
