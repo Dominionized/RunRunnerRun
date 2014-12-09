@@ -180,7 +180,7 @@
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMode</key>
-            <enum type="SpriteSettings::TrimMode">Trim</enum>
+            <enum type="SpriteSettings::TrimMode">None</enum>
             <key>heuristicMask</key>
             <false/>
             <key>pivotPoint</key>
@@ -199,6 +199,7 @@
             <filename>runner2.png</filename>
             <filename>runner3.png</filename>
             <filename>runner4.png</filename>
+            <filename>runner_jump.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
