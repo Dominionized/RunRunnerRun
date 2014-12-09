@@ -2,8 +2,8 @@ package ca.csf.gameobjects;
 
 import com.badlogic.gdx.math.Rectangle;
 
-public class Box extends Scrollable{
 
+public class Box extends Scrollable{
 
     private Rectangle boundingRectangle;
 
@@ -14,7 +14,18 @@ public class Box extends Scrollable{
     }
 
     public void update(float delta){
+        super.update(delta);
         boundingRectangle.setPosition(position);
+    }
+
+    public void reset(float newX) {
+
+        super.reset(newX);
+
+    }
+
+    public Rectangle getBoundingRectangle(){
+        return this.boundingRectangle;
     }
 
 
