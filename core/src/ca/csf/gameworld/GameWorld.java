@@ -34,8 +34,12 @@ public class GameWorld {
     }
 
     public void update(float delta){
-        runner.update(delta);
-        scrollHandler.update(delta);
+
+        if (runner.getIsAlive()) {
+
+            runner.update(delta);
+            scrollHandler.update(delta);
+        }
 
         if(Intersector.overlaps(runner.getBoundingRectagle(), groundRect)){
             runner.setIsJumping(false);
@@ -46,6 +50,7 @@ public class GameWorld {
         for(Box box : scrollHandler.getBoxList()){
             if(Intersector.overlaps(box.getBoundingRectangle(), runner.getBoundingRectagle())){
                 runner.onKilled();
+
             }
         }
 

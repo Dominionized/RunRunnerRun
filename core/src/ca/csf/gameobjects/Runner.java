@@ -24,6 +24,7 @@ public class Runner extends GameObject implements Killable{
         velocity = new Vector2(0, 0);
         acceleration = new Vector2(0, 981);
         AssetLoader.gameMusic.loop();
+        isAlive = true;
     }
 
     public void update(float delta) {
@@ -66,6 +67,7 @@ public class Runner extends GameObject implements Killable{
     @Override
     public void onKilled() {
         this.isAlive = false;
+        AssetLoader.gameMusic.stop();
         System.out.println("touch");
     }
 }

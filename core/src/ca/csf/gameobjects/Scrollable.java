@@ -35,4 +35,6 @@ public class Scrollable extends GameObject{
     public float getTailX() {
         return position.x + width;
     }
+
+
 }
