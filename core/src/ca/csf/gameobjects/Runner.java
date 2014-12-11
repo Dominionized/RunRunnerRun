@@ -1,6 +1,5 @@
 package ca.csf.gameobjects;
 
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
@@ -13,7 +12,7 @@ public class Runner extends GameObject implements Killable{
     private Rectangle boundingRectagle;
     private boolean isAlive;
     private boolean isJumping;
-    private float pixelDistance;
+    private float distance;
     private final int speed = 5;
 
     public Runner(float x, float y, int width, int height){
@@ -27,11 +26,11 @@ public class Runner extends GameObject implements Killable{
         acceleration = new Vector2(0, 981);
         AssetLoader.gameMusic.loop();
         isAlive = true;
-        pixelDistance = 0;
+        distance = 0;
     }
 
-    public int getPixelDistance() {
-        return (int)pixelDistance;
+    public int getDistance() {
+        return (int) distance;
     }
 
     public void update(float delta) {
@@ -42,7 +41,7 @@ public class Runner extends GameObject implements Killable{
 
         boundingRectagle.setPosition(position.x + 24, position.y);
 
-        pixelDistance += speed*delta;
+        distance += speed*delta;
     }
 
     public void onClick() {
@@ -68,7 +67,7 @@ public class Runner extends GameObject implements Killable{
     public Rectangle getBoundingRectagle(){
         return boundingRectagle;
     }
-    public Boolean getIsAlive(){ return isAlive; }
+    public Boolean isAlive(){ return isAlive; }
     public void setIsAlive( boolean isAlive ){ this.isAlive = isAlive; }
     public Boolean getIsJumping(){return this.isJumping;}
     public void setIsJumping(boolean isJumping){ this.isJumping = isJumping; }
@@ -76,7 +75,6 @@ public class Runner extends GameObject implements Killable{
     @Override
     public void onKilled() {
         this.isAlive = false;
-        AssetLoader.gameMusic.stop();
         System.out.println("touch");
     }
 }
