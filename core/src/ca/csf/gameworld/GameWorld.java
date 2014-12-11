@@ -5,9 +5,9 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 import ca.csf.gameobjects.Box;
-import ca.csf.gameobjects.Grass;
 import ca.csf.gameobjects.Runner;
 import ca.csf.gameobjects.ScrollHandler;
+import ca.csf.rrrhelpers.AssetLoader;
 
 public class GameWorld {
     private Runner runner;
@@ -35,10 +35,12 @@ public class GameWorld {
 
     public void update(float delta){
 
-        if (runner.getIsAlive()) {
+        if (runner.isAlive()) {
 
             runner.update(delta);
             scrollHandler.update(delta);
+        } else {
+            AssetLoader.gameMusic.stop();
         }
 
         if(Intersector.overlaps(runner.getBoundingRectagle(), groundRect)){

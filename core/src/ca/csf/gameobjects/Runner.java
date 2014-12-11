@@ -68,7 +68,7 @@ public class Runner extends GameObject implements Killable{
     public Rectangle getBoundingRectagle(){
         return boundingRectagle;
     }
-    public Boolean getIsAlive(){ return isAlive; }
+    public Boolean isAlive(){ return isAlive; }
     public void setIsAlive( boolean isAlive ){ this.isAlive = isAlive; }
     public Boolean getIsJumping(){return this.isJumping;}
     public void setIsJumping(boolean isJumping){ this.isJumping = isJumping; }
@@ -76,7 +76,6 @@ public class Runner extends GameObject implements Killable{
     @Override
     public void onKilled() {
         this.isAlive = false;
-        AssetLoader.gameMusic.stop();
         System.out.println("touch");
     }
 }
