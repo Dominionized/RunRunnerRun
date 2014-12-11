@@ -29,6 +29,11 @@ public class ScrollHandler {
         return frontSky;
     }
 
+    public Enemy getEnemy() {
+        return enemy;
+    }
+
+    private Enemy enemy;
     private List<Box> boxList;
     private GameWorld gameWorld;
 
@@ -41,6 +46,8 @@ public class ScrollHandler {
 
         frontSky = new Sky(0, 64, GameRenderer.getWidth(), 128, SCROLL_SPEED/8);
         backSky = new Sky(frontSky.getTailX(), 64, GameRenderer.getWidth(), 128, SCROLL_SPEED/8);
+
+        enemy = new Enemy(GameRenderer.getWidth(), GameRenderer.getHeight()-gameWorld.getGroundRect().getHeight() - 128, 64, 128, SCROLL_SPEED);
 
         boxList = new ArrayList<Box>();
 
@@ -62,6 +69,8 @@ public class ScrollHandler {
         backGrass.update(delta);
         frontSky.update(delta);
         backSky.update(delta);
+
+        enemy.update(delta);
 
         int i = 0;
         for(Box box : boxList){

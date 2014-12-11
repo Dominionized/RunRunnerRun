@@ -5,12 +5,15 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 import ca.csf.gameobjects.Box;
+import ca.csf.gameobjects.Enemy;
 import ca.csf.gameobjects.Grass;
 import ca.csf.gameobjects.Runner;
 import ca.csf.gameobjects.ScrollHandler;
 
 public class GameWorld {
     private Runner runner;
+
+    private Enemy enemy;
 
     public Rectangle getGroundRect() {
         return groundRect;
@@ -30,7 +33,7 @@ public class GameWorld {
         runner = new Runner(100, 320-32-108, 64, 64);
 
         scrollHandler = new ScrollHandler(this);
-
+        enemy = scrollHandler.getEnemy();
     }
 
     public void update(float delta){
@@ -50,8 +53,15 @@ public class GameWorld {
         for(Box box : scrollHandler.getBoxList()){
             if(Intersector.overlaps(box.getBoundingRectangle(), runner.getBoundingRectagle())){
                 runner.onKilled();
-
             }
+
+            if(Intersector.overlaps(box.getBoundingRectangle(), enemy.getBoundingRectangle())){
+                enemy.onKilled();
+            }
+        }
+
+        if(Intersector.overlaps(runner.getBoundingRectagle(), enemy.getBoundingRectangle()) && enemy.isAlive()){
+            enemy.onKilled();
         }
 
     }

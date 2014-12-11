@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import java.util.List;
 
 import ca.csf.gameobjects.Box;
+import ca.csf.gameobjects.Enemy;
 import ca.csf.gameobjects.Grass;
 import ca.csf.gameobjects.Runner;
 import ca.csf.gameobjects.ScrollHandler;
@@ -37,12 +38,8 @@ public class GameRenderer {
     private Sky frontSky, backSky;
     private Grass frontGrass, backGrass;
 
+    private Enemy enemy;
     private List<Box> boxList;
-
-    private TextureRegion sky, ground;
-    private Animation runnerAnimation;
-    private TextureRegion runnerIdle, runnerJump;
-    private TextureRegion box, enemy;
 
     public GameRenderer(GameWorld world) {
         myWorld = world;
@@ -59,7 +56,6 @@ public class GameRenderer {
         fontShadow = AssetLoader.fontShadow;
 
         initGameObjects();
-        initAssets();
     }
 
 
@@ -72,17 +68,8 @@ public class GameRenderer {
         frontGrass = scrollHandler.getFrontGrass();
         backGrass = scrollHandler.getBackGrass();
 
+        enemy = scrollHandler.getEnemy();
         boxList = scrollHandler.getBoxList();
-    }
-
-    private void initAssets() {
-        sky = AssetLoader.sky;
-        ground = AssetLoader.ground;
-        runnerAnimation = AssetLoader.runnerAnimation;
-        runnerIdle = AssetLoader.runnerIdle;
-        runnerJump = AssetLoader.runnerJump;
-        box = AssetLoader.box;
-        enemy = AssetLoader.enemy;
     }
 
     public void render(float runTime) {
@@ -109,11 +96,15 @@ public class GameRenderer {
             batcher.draw(AssetLoader.box, box.getPosition().x, box.getPosition().y, box.getWidth(), box.getHeight());
         }
 
+        if(enemy.isAlive()) {
+            batcher.draw(AssetLoader.enemy, enemy.getPosition().x, enemy.getPosition().y, enemy.getWidth(), enemy.getHeight());
+        }
+
         if(runner.getIsJumping()){
-            batcher.draw(runnerJump,
+            batcher.draw(AssetLoader.runnerJump,
                     runner.getX(), runner.getY(), runner.getWidth(), runner.getHeight());
         } else {
-            batcher.draw(runnerAnimation.getKeyFrame(runTime),
+            batcher.draw(AssetLoader.runnerAnimation.getKeyFrame(runTime),
                     runner.getX(), runner.getY(), runner.getWidth(), runner.getHeight());
         }
 
