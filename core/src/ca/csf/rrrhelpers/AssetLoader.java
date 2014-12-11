@@ -68,6 +68,7 @@ public class AssetLoader {
         runnerAnimation.setFrameDuration(0.1f);
 
         enemy = new TextureRegion(atlas.createSprite("enemy"));
+        enemy.flip(false, true);
         cone = new TextureRegion(atlas.createSprite("cone"));
     }
 

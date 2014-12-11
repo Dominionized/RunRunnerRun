@@ -1,5 +1,6 @@
 package ca.csf.gameobjects;
 
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
@@ -12,6 +13,10 @@ public class Runner extends GameObject implements Killable{
     private Rectangle boundingRectagle;
     private boolean isAlive;
     private boolean isJumping;
+    private boolean isKicking;
+    private float pixelDistance;
+    private float kickTime;
+    private final float KICK_DURATION = 30;
     private float distance;
     private final int speed = 5;
 
@@ -26,7 +31,14 @@ public class Runner extends GameObject implements Killable{
         acceleration = new Vector2(0, 981);
         AssetLoader.gameMusic.loop();
         isAlive = true;
+        pixelDistance = 0;
+        kickTime = 0;
+        isKicking = false;
         distance = 0;
+    }
+
+    public Boolean isKicking(){
+        return isKicking;
     }
 
     public int getDistance() {
@@ -41,6 +53,15 @@ public class Runner extends GameObject implements Killable{
 
         boundingRectagle.setPosition(position.x + 24, position.y);
 
+        pixelDistance += speed*delta;
+
+        if(isKicking){
+            kickTime += delta;
+            if(kickTime == KICK_DURATION){
+                isKicking = false;
+                kickTime = 0;
+            }
+        }
         distance += speed*delta;
     }
 
@@ -50,6 +71,10 @@ public class Runner extends GameObject implements Killable{
             isJumping = true;
         }
 
+    }
+
+    public void onKick(){
+        isKicking = true;
     }
 
     public float getX() {
@@ -68,13 +93,13 @@ public class Runner extends GameObject implements Killable{
         return boundingRectagle;
     }
     public Boolean isAlive(){ return isAlive; }
-    public void setIsAlive( boolean isAlive ){ this.isAlive = isAlive; }
     public Boolean getIsJumping(){return this.isJumping;}
     public void setIsJumping(boolean isJumping){ this.isJumping = isJumping; }
 
     @Override
     public void onKilled() {
         this.isAlive = false;
+        AssetLoader.gameMusic.stop();
         System.out.println("touch");
     }
 }
