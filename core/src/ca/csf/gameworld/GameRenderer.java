@@ -117,7 +117,7 @@ public class GameRenderer {
                     runner.getX(), runner.getY(), runner.getWidth(), runner.getHeight());
         }
 
-        String textToDraw = Integer.toString(runner.getPixelDistance()) + " m";
+        String textToDraw = Integer.toString(runner.getDistance()) + " m";
 
         fontShadow.draw(batcher, textToDraw, 25, 25);
         font.draw(batcher, textToDraw, 25, 25);
