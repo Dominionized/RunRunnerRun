@@ -13,6 +13,8 @@ public class Runner extends GameObject implements Killable{
     private Rectangle boundingRectagle;
     private boolean isAlive;
     private boolean isJumping;
+    private float pixelDistance;
+    private final int speed = 5;
 
     public Runner(float x, float y, int width, int height){
         this.width = width;
@@ -25,6 +27,11 @@ public class Runner extends GameObject implements Killable{
         acceleration = new Vector2(0, 981);
         AssetLoader.gameMusic.loop();
         isAlive = true;
+        pixelDistance = 0;
+    }
+
+    public int getPixelDistance() {
+        return (int)pixelDistance;
     }
 
     public void update(float delta) {
@@ -34,6 +41,8 @@ public class Runner extends GameObject implements Killable{
         position.add(velocity.cpy().scl(delta));
 
         boundingRectagle.setPosition(position.x + 24, position.y);
+
+        pixelDistance += speed*delta;
     }
 
     public void onClick() {

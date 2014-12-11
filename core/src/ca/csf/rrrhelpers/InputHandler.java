@@ -23,6 +23,10 @@ public class InputHandler implements InputProcessor {
 
     @Override
     public boolean keyTyped(char character) {
+
+        if (character == ' '){
+            myRunner.onClick();
+        }
         return false;
     }
 

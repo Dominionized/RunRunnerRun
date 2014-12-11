@@ -3,12 +3,16 @@ package ca.csf.rrrhelpers;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import static com.badlogic.gdx.graphics.Texture.*;
 
 public class AssetLoader {
+
+    public static BitmapFont font;
+    public static BitmapFont fontShadow;
     public static TextureAtlas atlas;
     public static TextureRegion sky, ground;
 
@@ -22,6 +26,12 @@ public class AssetLoader {
     public static Sound gameMusic;
 
     public static void load(){
+
+        font = new BitmapFont(Gdx.files.internal("font.fnt"));
+        font.setScale(1,-1);
+
+        fontShadow = new BitmapFont(Gdx.files.internal("shadow.fnt"));
+        fontShadow.setScale(1,-1);
 
         atlas = new TextureAtlas("spritesheet.txt");
 
