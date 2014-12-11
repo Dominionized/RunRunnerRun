@@ -64,7 +64,11 @@ public class GameWorld {
         }
 
         if(Intersector.overlaps(runner.getBoundingRectagle(), enemy.getBoundingRectangle()) && enemy.isAlive()){
-            enemy.onKilled();
+            if(runner.isKicking()){
+                enemy.onKilled();
+            } else {
+                runner.onKilled();
+            }
         }
 
     }

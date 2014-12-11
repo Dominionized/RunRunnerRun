@@ -16,7 +16,7 @@ public class Runner extends GameObject implements Killable{
     private boolean isKicking;
     private float pixelDistance;
     private float kickTime;
-    private final float KICK_DURATION = 30;
+    private final float KICK_DURATION = 0.5f;
     private float distance;
     private final int speed = 5;
 
@@ -57,7 +57,7 @@ public class Runner extends GameObject implements Killable{
 
         if(isKicking){
             kickTime += delta;
-            if(kickTime == KICK_DURATION){
+            if(kickTime >= KICK_DURATION){
                 isKicking = false;
                 kickTime = 0;
             }
@@ -65,7 +65,7 @@ public class Runner extends GameObject implements Killable{
         distance += speed*delta;
     }
 
-    public void onClick() {
+    public void onJump() {
         if(velocity.y == 0) {
             velocity.y = -JUMP_HEIGHT;
             isJumping = true;

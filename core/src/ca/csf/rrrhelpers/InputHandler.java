@@ -1,5 +1,6 @@
 package ca.csf.rrrhelpers;
 
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 
 import ca.csf.gameobjects.Runner;
@@ -13,7 +14,18 @@ public class InputHandler implements InputProcessor {
 
     @Override
     public boolean keyDown(int keycode) {
-        return false;
+        switch(keycode){
+            case(Input.Keys.SPACE):
+            case(Input.Keys.UP):
+            case(Input.Keys.A):
+                myRunner.onJump();
+                break;
+            case(Input.Keys.RIGHT):
+                myRunner.onKick();
+                break;
+        }
+
+        return true;
     }
 
     @Override
@@ -28,7 +40,7 @@ public class InputHandler implements InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        myRunner.onClick();
+        myRunner.onJump();
         return true;
     }
 
