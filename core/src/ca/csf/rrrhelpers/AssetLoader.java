@@ -17,7 +17,7 @@ public class AssetLoader {
     public static TextureRegion sky, ground;
 
     public static Animation runnerAnimation;
-    public static TextureRegion runnerIdle, runnerJump, runnerOne, runnerTwo, runnerThree, runnerFour;
+    public static TextureRegion runnerIdle, runnerJump, runnerKick, runnerOne, runnerTwo, runnerThree, runnerFour;
 
     public static TextureRegion enemy;
     public static TextureRegion cone;
@@ -48,6 +48,7 @@ public class AssetLoader {
 
         runnerIdle = new TextureRegion(atlas.createSprite("runner_idle"));
         runnerJump = new TextureRegion(atlas.createSprite("runner_jump"));
+        runnerKick = new TextureRegion(atlas.createSprite("runner_kick"));
         runnerOne = new TextureRegion(atlas.createSprite("runner1"));
         runnerTwo = new TextureRegion(atlas.createSprite("runner2"));
         runnerThree = new TextureRegion(atlas.createSprite("runner3"));
@@ -56,6 +57,7 @@ public class AssetLoader {
         gameMusic = Gdx.audio.newSound(Gdx.files.internal("rrrGameSong.mp3"));
 
         runnerJump.flip(false, true);
+        runnerKick.flip(false, true);
 
         TextureRegion[] runnerRun = {runnerOne, runnerTwo, runnerThree, runnerFour};
 
