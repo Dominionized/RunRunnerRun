@@ -8,7 +8,7 @@ public class Enemy extends Scrollable implements Killable {
 
     public Enemy(float x, float y, int width, int height, float scrollSpeed) {
         super(x, y, width, height, scrollSpeed);
-        isAlive = true
+        isAlive = true;
     }
 
     public Rectangle getBouncingRectangle() {
