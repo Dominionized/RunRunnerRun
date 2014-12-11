@@ -100,7 +100,9 @@ public class GameRenderer {
             batcher.draw(AssetLoader.enemy, enemy.getPosition().x, enemy.getPosition().y, enemy.getWidth(), enemy.getHeight());
         }
 
-        if(runner.getIsJumping()){
+        if(runner.isKicking()){
+          batcher.draw(AssetLoader.runnerIdle, runner.getX(), runner.getY(), runner.getWidth(), runner.getHeight());
+        } else if(runner.getIsJumping()){
             batcher.draw(AssetLoader.runnerJump,
                     runner.getX(), runner.getY(), runner.getWidth(), runner.getHeight());
         } else {
