@@ -9,6 +9,10 @@ import ca.csf.gameworld.GameWorld;
 
 public class ScrollHandler {
 
+    public int getScrollSpeed() {
+        return SCROLL_SPEED;
+    }
+
     private final int SCROLL_SPEED = 300;
     private final int BOX_GAP = 175;
     private final int NBR_BOX = 3;

@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -28,6 +29,9 @@ public class GameRenderer {
 
     private SpriteBatch batcher;
 
+    private BitmapFont font;
+    private BitmapFont fontShadow;
+
     private Runner runner;
     private ScrollHandler scrollHandler;
     private Sky frontSky, backSky;
@@ -50,6 +54,9 @@ public class GameRenderer {
 
         shapeRenderer = new ShapeRenderer();
         shapeRenderer.setProjectionMatrix(camera.combined);
+
+        font = AssetLoader.font;
+        fontShadow = AssetLoader.fontShadow;
 
         initGameObjects();
         initAssets();
@@ -110,14 +117,22 @@ public class GameRenderer {
                     runner.getX(), runner.getY(), runner.getWidth(), runner.getHeight());
         }
 
+        String textToDraw = Integer.toString(runner.getPixelDistance()) + " m";
+
+        fontShadow.draw(batcher, textToDraw, 25, 25);
+        font.draw(batcher, textToDraw, 25, 25);
+
+
         // End SpriteBatch
         batcher.end();
 
-
+/* BOUNDING BOX
         shapeRenderer.begin(ShapeType.Line);
         shapeRenderer.setColor(0 / 255.0f, 0 / 255.0f, 0 / 255.0f, 1);
         shapeRenderer.rect(runner.getBoundingRectagle().getX(), runner.getBoundingRectagle().getY(), runner.getBoundingRectagle().getWidth(), runner.getBoundingRectagle().getHeight());
         shapeRenderer.end();
+        */
+
     }
 
     public static int getHeight() {
