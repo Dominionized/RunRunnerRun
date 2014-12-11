@@ -28,10 +28,10 @@ public class AssetLoader {
     public static void load(){
 
         font = new BitmapFont(Gdx.files.internal("font.fnt"));
-        font.setScale(1,-1);
+        font.setScale(0.5f,-0.5f);
 
         fontShadow = new BitmapFont(Gdx.files.internal("shadow.fnt"));
-        fontShadow.setScale(1,-1);
+        fontShadow.setScale(0.5f,-0.5f);
 
         atlas = new TextureAtlas("spritesheet.txt");
 
