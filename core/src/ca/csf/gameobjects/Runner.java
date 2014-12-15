@@ -47,13 +47,13 @@ public class Runner extends GameObject implements Killable{
 
     public void update(float delta) {
 
-        velocity.add(acceleration.cpy().scl(delta));
+    velocity.add(acceleration.cpy().scl(delta));
 
-        position.add(velocity.cpy().scl(delta));
+    position.add(velocity.cpy().scl(delta));
 
-        boundingRectagle.setPosition(position.x + 24, position.y);
+    boundingRectagle.setPosition(position.x + 24, position.y);
 
-        pixelDistance += speed*delta;
+    pixelDistance += speed*delta;
 
         if(isKicking){
             kickTime += delta;
@@ -62,10 +62,12 @@ public class Runner extends GameObject implements Killable{
                 kickTime = 0;
             }
         }
-        distance += speed*delta;
+    distance += speed*delta;
     }
 
+
     public void onJump() {
+
         if(velocity.y == 0) {
             velocity.y = -JUMP_HEIGHT;
             isJumping = true;
@@ -74,7 +76,9 @@ public class Runner extends GameObject implements Killable{
     }
 
     public void onKick(){
+        if (isAlive){
         isKicking = true;
+        }
     }
 
     public float getX() {
@@ -99,7 +103,7 @@ public class Runner extends GameObject implements Killable{
     @Override
     public void onKilled() {
         this.isAlive = false;
-        AssetLoader.gameMusic.stop();
         System.out.println("touch");
+
     }
 }

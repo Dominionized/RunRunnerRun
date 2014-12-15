@@ -22,12 +22,18 @@ public class GameWorld {
 
     private Rectangle groundRect;
     private ScrollHandler scrollHandler;
+    private GameState currentState;
 
     public ScrollHandler getScrollHandler() {
         return scrollHandler;
     }
 
+    public enum GameState {
+        MENU, READY, RUNNING, GAMEOVER, HIGHSCORE
+    }
+
     public GameWorld(){
+        currentState = GameState.RUNNING;
         groundRect = new Rectangle();
         groundRect.set(0, 320-32, 480, 32);
 
@@ -37,15 +43,35 @@ public class GameWorld {
         enemy = scrollHandler.getEnemy();
     }
 
-    public void update(float delta){
+
+    public void update(float delta) {
+
+        switch (currentState) {
+            case READY:
+            case MENU:
+                //updateReady(delta);
+                break;
+
+            case RUNNING:
+                updateRunning(delta);
+                break;
+            default:
+                break;
+        }
+
+    }
+
+
+
+
+    public void updateRunning(float delta){
 
         if (runner.isAlive()) {
 
             runner.update(delta);
             scrollHandler.update(delta);
-        } else {
-            AssetLoader.gameMusic.stop();
-        }
+
+
 
         if(Intersector.overlaps(runner.getBoundingRectagle(), groundRect)){
             runner.setIsJumping(false);
@@ -71,6 +97,12 @@ public class GameWorld {
             }
         }
 
+        } else {
+            AssetLoader.gameMusic.stop();
+            AssetLoader.dyingMusic.play();
+            currentState = GameState.GAMEOVER;
+
+        }
     }
 
     public Runner getRunner(){

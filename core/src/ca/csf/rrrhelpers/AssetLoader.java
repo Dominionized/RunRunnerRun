@@ -23,7 +23,7 @@ public class AssetLoader {
     public static TextureRegion cone;
     public static TextureRegion box;
 
-    public static Sound gameMusic;
+    public static Sound gameMusic , dyingMusic;
 
     public static void load(){
 
@@ -55,6 +55,7 @@ public class AssetLoader {
         runnerFour = new TextureRegion(atlas.createSprite("runner4"));
 
         gameMusic = Gdx.audio.newSound(Gdx.files.internal("rrrGameSong.mp3"));
+        dyingMusic = Gdx.audio.newSound(Gdx.files.internal("RRRDyingSong.mp3"));
 
         runnerJump.flip(false, true);
         runnerKick.flip(false, true);
