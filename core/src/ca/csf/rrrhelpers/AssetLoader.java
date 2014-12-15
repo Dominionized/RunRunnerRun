@@ -66,7 +66,7 @@ public class AssetLoader {
         runnerFour = new TextureRegion(atlas.createSprite("runner4"));
 
         gameMusic = Gdx.audio.newSound(Gdx.files.internal("rrrGameSong.mp3"));
-//        dyingMusic = Gdx.audio.newSound(Gdx.files.internal("RRRDyingSong.mp3"));
+        dyingMusic = Gdx.audio.newSound(Gdx.files.internal("RRRDyingSong.mp3"));
 
         runnerJump.flip(false, true);
         runnerKick.flip(false, true);
