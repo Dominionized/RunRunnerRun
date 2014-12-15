@@ -93,7 +93,7 @@ public class GameRenderer {
         batcher.draw(AssetLoader.ground, backGrass.getPosition().x, backGrass.getPosition().y, backGrass.getWidth(), backGrass.getHeight());
 
         for(Box box : boxList){
-            batcher.draw(AssetLoader.box, box.getPosition().x, box.getPosition().y, box.getWidth(), box.getHeight());
+            batcher.draw(AssetLoader.boxAnimation.getKeyFrame(runTime), box.getPosition().x, box.getPosition().y, box.getWidth(), box.getHeight());
         }
 
         if(enemy.isAlive()) {

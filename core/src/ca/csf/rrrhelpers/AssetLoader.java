@@ -21,7 +21,8 @@ public class AssetLoader {
 
     public static TextureRegion enemy;
     public static TextureRegion cone;
-    public static TextureRegion box;
+    public static TextureRegion boxOne, boxTwo, boxThree;
+    public static Animation boxAnimation;
 
     public static Sound gameMusic , dyingMusic;
 
@@ -43,8 +44,18 @@ public class AssetLoader {
         ground = new TextureRegion(atlas.createSprite("ground"));
         ground.flip(false, true);
 
-        box = new TextureRegion(atlas.createSprite("box"));
-        box.flip(false, true);
+        boxOne = new TextureRegion(atlas.createSprite("box1"));
+        boxTwo = new TextureRegion(atlas.createSprite("box2"));
+        boxThree = new TextureRegion(atlas.createSprite("box3"));
+        boxOne.flip(false, true);
+        boxTwo.flip(false, true);
+        boxThree.flip(false, true);
+
+        TextureRegion[] boxes = {boxOne, boxTwo, boxThree};
+
+        boxAnimation = new Animation(0.06f, boxes);
+        boxAnimation.setPlayMode(Animation.PlayMode.LOOP_RANDOM);
+        boxAnimation.setFrameDuration(0.1f);
 
         runnerIdle = new TextureRegion(atlas.createSprite("runner_idle"));
         runnerJump = new TextureRegion(atlas.createSprite("runner_jump"));
@@ -55,7 +66,7 @@ public class AssetLoader {
         runnerFour = new TextureRegion(atlas.createSprite("runner4"));
 
         gameMusic = Gdx.audio.newSound(Gdx.files.internal("rrrGameSong.mp3"));
-        dyingMusic = Gdx.audio.newSound(Gdx.files.internal("RRRDyingSong.mp3"));
+//        dyingMusic = Gdx.audio.newSound(Gdx.files.internal("RRRDyingSong.mp3"));
 
         runnerJump.flip(false, true);
         runnerKick.flip(false, true);
@@ -72,7 +83,6 @@ public class AssetLoader {
 
         enemy = new TextureRegion(atlas.createSprite("enemy"));
         enemy.flip(false, true);
-        cone = new TextureRegion(atlas.createSprite("cone"));
     }
 
     public static void dispose(){
