@@ -2,9 +2,23 @@ spritesheet.png
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-box
+box1
   rotate: false
-  xy: 54, 2
+  xy: 632, 2
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+box2
+  rotate: false
+  xy: 36, 36
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+box3
+  rotate: false
+  xy: 2, 36
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
@@ -18,77 +32,77 @@ cone
   index: -1
 enemy
   rotate: false
-  xy: 20, 2
+  xy: 268, 36
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
   index: -1
 ground
   rotate: false
-  xy: 132, 68
+  xy: 20, 2
   size: 480, 32
   orig: 480, 32
   offset: 0, 0
   index: -1
 hatguy
   rotate: false
-  xy: 484, 2
+  xy: 434, 36
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 runner1
   rotate: false
-  xy: 418, 2
+  xy: 566, 36
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 runner2
   rotate: false
-  xy: 352, 2
+  xy: 500, 36
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 runner3
   rotate: false
-  xy: 550, 2
+  xy: 368, 36
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 runner4
   rotate: false
-  xy: 220, 2
+  xy: 302, 36
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 runner_idle
   rotate: false
-  xy: 88, 2
+  xy: 70, 36
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 runner_jump
   rotate: false
-  xy: 286, 2
+  xy: 136, 36
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 runner_kick
   rotate: false
-  xy: 154, 2
+  xy: 202, 36
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 sky
   rotate: false
-  xy: 2, 68
+  xy: 502, 2
   size: 128, 32
   orig: 128, 32
   offset: 0, 0
