@@ -126,15 +126,16 @@ public class GameRenderer {
                     runner.getX(), runner.getY(), runner.getWidth(), runner.getHeight());
         }
 
-
         fontShadow.draw(batcher, myWorld.getCurrentState().toString(), 100, 100);
         font.draw(batcher, myWorld.getCurrentState().toString(), 100, 100);
+
 
         if (myWorld.isReady()) {
             shapeRenderer.begin(ShapeType.Filled);
             shapeRenderer.setColor(new Color(0, 0, 0, 0.5f));
             shapeRenderer.rect(readyWindow.x, readyWindow.y, readyWindow.width, readyWindow.height);
             shapeRenderer.end();
+            font.draw(batcher, "Touch me to start :3", 15,15);
 
         } else {
 
@@ -144,7 +145,6 @@ public class GameRenderer {
             font.draw(batcher, scoreToDraw, 25, 25);
 
         }
-
 
         // End SpriteBatch
         batcher.end();

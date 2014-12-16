@@ -18,6 +18,10 @@ public class InputHandler implements InputProcessor {
 
     @Override
     public boolean keyDown(int keycode) {
+        if (myWorld.isReady()){
+            myWorld.restart();
+            return true;
+        }
         switch (keycode) {
             case (Input.Keys.SPACE):
             case (Input.Keys.UP):
