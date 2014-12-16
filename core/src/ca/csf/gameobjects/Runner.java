@@ -28,7 +28,6 @@ public class Runner extends GameObject implements Killable{
         position = new Vector2(x, y);
         velocity = new Vector2(0, 0);
         acceleration = new Vector2(0, 981);
-        AssetLoader.gameMusic.loop();
         isAlive = true;
         kickTime = 0;
         isKicking = false;

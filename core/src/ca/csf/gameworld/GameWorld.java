@@ -28,6 +28,7 @@ public class GameWorld {
 
         scrollHandler = new ScrollHandler(this);
         enemy = scrollHandler.getEnemy();
+        AssetLoader.gameMusic.loop();
     }
 
     public GameRenderer getGameRenderer() {
@@ -54,6 +55,9 @@ public class GameWorld {
         scrollHandler.onRestart();
         runner.restart();
         currentState = GameState.RUNNING;
+
+        AssetLoader.dyingMusic.stop();
+        AssetLoader.gameMusic.loop();
 
     }
 
