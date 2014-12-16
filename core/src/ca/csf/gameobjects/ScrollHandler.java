@@ -31,19 +31,9 @@ public class ScrollHandler {
         backSky = new Sky(frontSky.getTailX(), 64, GameRenderer.getWidth(), 128, SCROLL_SPEED / 8);
 
         enemy = new Enemy(GameRenderer.getWidth(), GameRenderer.getHeight() - gameWorld.getGroundRect().getHeight() - 128, 64, 128, SCROLL_SPEED);
-
         boxList = new ArrayList<Box>();
 
-        Random random = new Random();
-
-        for (int i = 0; i < NBR_BOX; ++i) {
-            int gapToAdd = random.nextInt(300);
-            float posX = 446 + gapToAdd;
-            if (i > 0) {
-                posX = boxList.get(i - 1).getTailX() + BOX_GAP + gapToAdd;
-            }
-            boxList.add(new Box(posX, GameRenderer.getHeight() - 64, 32, 32, SCROLL_SPEED));
-        }
+        initBoxes();
 
     }
 
@@ -120,10 +110,9 @@ public class ScrollHandler {
         backGrass.onRestart(frontGrass.getTailX(), SCROLL_SPEED);
         frontSky.reset(0);
         backSky.reset(frontSky.getTailX());
-        for(Box box : boxList){
-            box.reset(0);
-        }
+        initBoxes();
         enemy.reset(0);
+
     }
 
 
@@ -137,6 +126,23 @@ public class ScrollHandler {
 
     public List<Box> getBoxList() {
         return boxList;
+    }
+
+    private void initBoxes(){
+
+        boxList.removeAll(boxList);
+
+        Random random = new Random();
+
+        for (int i = 0; i < NBR_BOX; ++i) {
+            int gapToAdd = random.nextInt(300);
+            float posX = 446 + gapToAdd;
+            if (i > 0) {
+                posX = boxList.get(i - 1).getTailX() + BOX_GAP + gapToAdd;
+            }
+            boxList.add(new Box(posX, GameRenderer.getHeight() - 64, 32, 32, SCROLL_SPEED));
+        }
+
     }
 
 }
