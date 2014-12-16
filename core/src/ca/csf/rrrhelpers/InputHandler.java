@@ -1,26 +1,30 @@
 package ca.csf.rrrhelpers;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 
 import ca.csf.gameobjects.Runner;
+import ca.csf.gameworld.GameWorld;
 
 public class InputHandler implements InputProcessor {
-    private Runner myRunner;
+    private final GameWorld myWorld;
+    private final Runner myRunner;
 
-    public InputHandler(Runner runner){
-        this.myRunner = runner;
+    public InputHandler(GameWorld world) {
+        myWorld = world;
+        this.myRunner = world.getRunner();
     }
 
     @Override
     public boolean keyDown(int keycode) {
-        switch(keycode){
-            case(Input.Keys.SPACE):
-            case(Input.Keys.UP):
-            case(Input.Keys.A):
+        switch (keycode) {
+            case (Input.Keys.SPACE):
+            case (Input.Keys.UP):
+            case (Input.Keys.A):
                 myRunner.onJump();
                 break;
-            case(Input.Keys.RIGHT):
+            case (Input.Keys.RIGHT):
                 myRunner.onKick();
                 break;
         }
@@ -40,7 +44,16 @@ public class InputHandler implements InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        myRunner.onJump();
+        if (myWorld.isRunning()){
+            if (screenX < (Gdx.graphics.getWidth()/2)){
+                myRunner.onJump();
+            }
+            else{
+                myRunner.onKick();
+            }
+        } else if (myWorld.isReady()){
+            myWorld.restart();
+        }
         return true;
     }
 

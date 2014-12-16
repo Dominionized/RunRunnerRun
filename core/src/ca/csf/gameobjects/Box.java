@@ -18,10 +18,6 @@ public class Box extends Scrollable{
         boundingRectangle.setPosition(position);
     }
 
-    public void reset(float newX) {
-        super.reset(newX);
-    }
-
     public Rectangle getBoundingRectangle(){
         return this.boundingRectangle;
     }

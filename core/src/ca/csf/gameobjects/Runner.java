@@ -1,6 +1,5 @@
 package ca.csf.gameobjects;
 
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
@@ -10,31 +9,40 @@ import ca.csf.rrrhelpers.AssetLoader;
 public class Runner extends GameObject implements Killable{
 
     private static final int JUMP_HEIGHT = 400;
-    private Rectangle boundingRectagle;
+    private Rectangle boundingRectangle;
     private boolean isAlive;
     private boolean isJumping;
     private boolean isKicking;
-    private float pixelDistance;
     private float kickTime;
     private final float KICK_DURATION = 0.5f;
+
     private float distance;
     private final int speed = 5;
 
     public Runner(float x, float y, int width, int height){
         this.width = width;
         this.height = height;
-        boundingRectagle = new Rectangle();
-        boundingRectagle.setSize(16, height);
+        boundingRectangle = new Rectangle();
+        boundingRectangle.setSize(16, height);
 
         position = new Vector2(x, y);
         velocity = new Vector2(0, 0);
         acceleration = new Vector2(0, 981);
         AssetLoader.gameMusic.loop();
         isAlive = true;
-        pixelDistance = 0;
         kickTime = 0;
         isKicking = false;
         distance = 0;
+    }
+
+    public void restart(){
+        //Reset every possible value
+
+        isAlive = true;
+        isJumping = false;
+        isKicking = false;
+        distance = 0;
+
     }
 
     public Boolean isKicking(){
@@ -51,9 +59,7 @@ public class Runner extends GameObject implements Killable{
 
     position.add(velocity.cpy().scl(delta));
 
-    boundingRectagle.setPosition(position.x + 24, position.y);
-
-    pixelDistance += speed*delta;
+    boundingRectangle.setPosition(position.x + 24, position.y);
 
         if(isKicking){
             kickTime += delta;
@@ -93,8 +99,8 @@ public class Runner extends GameObject implements Killable{
     public int getHeight() {
         return height;
     }
-    public Rectangle getBoundingRectagle(){
-        return boundingRectagle;
+    public Rectangle getBoundingRectangle(){
+        return boundingRectangle;
     }
     public Boolean isAlive(){ return isAlive; }
     public Boolean getIsJumping(){return this.isJumping;}

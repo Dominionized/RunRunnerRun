@@ -1,6 +1,7 @@
 package ca.csf.gameworld;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -9,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.math.Rectangle;
 
 import java.util.List;
 
@@ -21,25 +23,26 @@ import ca.csf.gameobjects.Sky;
 import ca.csf.rrrhelpers.AssetLoader;
 
 public class GameRenderer {
+
     private static final int HEIGHT = 320;
     private static final int WIDTH = 480;
-
+    private static final int READY_WINDOW_WIDTH = 300;
+    private static final int READY_WINDOW_HEIGHT = 200;
+    private final int READY_WINDOW_X;
+    private final int READY_WINDOW_Y;
     private GameWorld myWorld;
     private OrthographicCamera camera;
     private ShapeRenderer shapeRenderer;
-
     private SpriteBatch batcher;
-
     private BitmapFont font;
     private BitmapFont fontShadow;
-
     private Runner runner;
     private ScrollHandler scrollHandler;
     private Sky frontSky, backSky;
     private Grass frontGrass, backGrass;
-
     private Enemy enemy;
     private List<Box> boxList;
+    private Rectangle readyWindow;
 
     public GameRenderer(GameWorld world) {
         myWorld = world;
@@ -55,16 +58,29 @@ public class GameRenderer {
         font = AssetLoader.font;
         fontShadow = AssetLoader.fontShadow;
 
+
+        READY_WINDOW_X = (WIDTH - READY_WINDOW_WIDTH) / 2;
+        READY_WINDOW_Y = (HEIGHT - READY_WINDOW_HEIGHT) / 2;
+        readyWindow = new Rectangle(READY_WINDOW_X, READY_WINDOW_Y, READY_WINDOW_WIDTH, READY_WINDOW_HEIGHT);
+
+
         initGameObjects();
     }
 
+    public static int getHeight() {
+        return HEIGHT;
+    }
+
+    public static int getWidth() {
+        return WIDTH;
+    }
 
     private void initGameObjects() {
         runner = myWorld.getRunner();
         scrollHandler = myWorld.getScrollHandler();
 
         frontSky = scrollHandler.getFrontSky();
-        backSky= scrollHandler.getBackSky();
+        backSky = scrollHandler.getBackSky();
         frontGrass = scrollHandler.getFrontGrass();
         backGrass = scrollHandler.getBackGrass();
 
@@ -92,17 +108,17 @@ public class GameRenderer {
         batcher.draw(AssetLoader.ground, frontGrass.getPosition().x, frontGrass.getPosition().y, frontGrass.getWidth(), frontGrass.getHeight());
         batcher.draw(AssetLoader.ground, backGrass.getPosition().x, backGrass.getPosition().y, backGrass.getWidth(), backGrass.getHeight());
 
-        for(Box box : boxList){
+        for (Box box : boxList) {
             batcher.draw(AssetLoader.boxAnimation.getKeyFrame(runTime), box.getPosition().x, box.getPosition().y, box.getWidth(), box.getHeight());
         }
 
-        if(enemy.isAlive()) {
+        if (enemy.isAlive()) {
             batcher.draw(AssetLoader.enemy, enemy.getPosition().x, enemy.getPosition().y, enemy.getWidth(), enemy.getHeight());
         }
 
-        if(runner.isKicking()){
-          batcher.draw(AssetLoader.runnerKick, runner.getX(), runner.getY(), runner.getWidth(), runner.getHeight());
-        } else if(runner.getIsJumping()){
+        if (runner.isKicking()) {
+            batcher.draw(AssetLoader.runnerKick, runner.getX(), runner.getY(), runner.getWidth(), runner.getHeight());
+        } else if (runner.getIsJumping()) {
             batcher.draw(AssetLoader.runnerJump,
                     runner.getX(), runner.getY(), runner.getWidth(), runner.getHeight());
         } else {
@@ -110,10 +126,24 @@ public class GameRenderer {
                     runner.getX(), runner.getY(), runner.getWidth(), runner.getHeight());
         }
 
-        String textToDraw = Integer.toString(runner.getDistance()) + " m";
 
-        fontShadow.draw(batcher, textToDraw, 25, 25);
-        font.draw(batcher, textToDraw, 25, 25);
+        fontShadow.draw(batcher, myWorld.getCurrentState().toString(), 100, 100);
+        font.draw(batcher, myWorld.getCurrentState().toString(), 100, 100);
+
+        if (myWorld.isReady()) {
+            shapeRenderer.begin(ShapeType.Filled);
+            shapeRenderer.setColor(new Color(0, 0, 0, 0.5f));
+            shapeRenderer.rect(readyWindow.x, readyWindow.y, readyWindow.width, readyWindow.height);
+            shapeRenderer.end();
+
+        } else {
+
+            String scoreToDraw = Integer.toString(runner.getDistance()) + " m";
+
+            fontShadow.draw(batcher, scoreToDraw, 25, 25);
+            font.draw(batcher, scoreToDraw, 25, 25);
+
+        }
 
 
         // End SpriteBatch
@@ -122,17 +152,9 @@ public class GameRenderer {
 /* BOUNDING BOX
         shapeRenderer.begin(ShapeType.Line);
         shapeRenderer.setColor(0 / 255.0f, 0 / 255.0f, 0 / 255.0f, 1);
-        shapeRenderer.rect(runner.getBoundingRectagle().getX(), runner.getBoundingRectagle().getY(), runner.getBoundingRectagle().getWidth(), runner.getBoundingRectagle().getHeight());
+        shapeRenderer.rect(runner.getBoundingRectangle().getX(), runner.getBoundingRectangle().getY(), runner.getBoundingRectangle().getWidth(), runner.getBoundingRectangle().getHeight());
         shapeRenderer.end();
         */
 
-    }
-
-    public static int getHeight() {
-        return HEIGHT;
-    }
-
-    public static int getWidth() {
-        return WIDTH;
     }
 }
