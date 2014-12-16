@@ -11,14 +11,14 @@ box1
   index: -1
 box2
   rotate: false
-  xy: 36, 36
+  xy: 2, 36
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 box3
   rotate: false
-  xy: 2, 36
+  xy: 666, 2
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
@@ -32,7 +32,7 @@ cone
   index: -1
 enemy
   rotate: false
-  xy: 268, 36
+  xy: 488, 36
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
@@ -46,56 +46,63 @@ ground
   index: -1
 hatguy
   rotate: false
-  xy: 434, 36
+  xy: 522, 36
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
+mountains
+  rotate: false
+  xy: 36, 36
+  size: 120, 50
+  orig: 120, 50
+  offset: 0, 0
+  index: -1
 runner1
   rotate: false
-  xy: 566, 36
+  xy: 654, 36
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 runner2
   rotate: false
-  xy: 500, 36
+  xy: 588, 36
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 runner3
   rotate: false
-  xy: 368, 36
+  xy: 422, 36
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 runner4
   rotate: false
-  xy: 302, 36
+  xy: 356, 36
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 runner_idle
   rotate: false
-  xy: 70, 36
+  xy: 158, 36
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 runner_jump
   rotate: false
-  xy: 136, 36
+  xy: 224, 36
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 runner_kick
   rotate: false
-  xy: 202, 36
+  xy: 290, 36
   size: 64, 64
   orig: 64, 64
   offset: 0, 0

@@ -4,10 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Rectangle;
@@ -19,7 +17,7 @@ import ca.csf.gameobjects.Enemy;
 import ca.csf.gameobjects.Grass;
 import ca.csf.gameobjects.Runner;
 import ca.csf.gameobjects.ScrollHandler;
-import ca.csf.gameobjects.Sky;
+import ca.csf.gameobjects.BackgroundLayer;
 import ca.csf.rrrhelpers.AssetLoader;
 
 public class GameRenderer {
@@ -38,7 +36,7 @@ public class GameRenderer {
     private BitmapFont fontShadow;
     private Runner runner;
     private ScrollHandler scrollHandler;
-    private Sky frontSky, backSky;
+    private BackgroundLayer frontSky, backSky, frontMountains, backMountains;
     private Grass frontGrass, backGrass;
     private Enemy enemy;
     private List<Box> boxList;
@@ -80,7 +78,9 @@ public class GameRenderer {
         scrollHandler = myWorld.getScrollHandler();
 
         frontSky = scrollHandler.getFrontSky();
-        backSky = scrollHandler.getBackSky();
+        backSky= scrollHandler.getBackSky();
+        frontMountains = scrollHandler.getFrontMountains();
+        backMountains = scrollHandler.getBackMountains();
         frontGrass = scrollHandler.getFrontGrass();
         backGrass = scrollHandler.getBackGrass();
 
@@ -104,6 +104,9 @@ public class GameRenderer {
         batcher.enableBlending();
         batcher.draw(AssetLoader.sky, frontSky.getPosition().x, frontSky.getPosition().y, frontSky.getWidth(), frontSky.getHeight());
         batcher.draw(AssetLoader.sky, backSky.getPosition().x, backSky.getPosition().y, backSky.getWidth(), backSky.getHeight());
+
+        batcher.draw(AssetLoader.mountains, frontMountains.getPosition().x, frontMountains.getPosition().y, frontMountains.getWidth(), frontMountains.getHeight());
+        batcher.draw(AssetLoader.mountains, backMountains.getPosition().x, backMountains.getPosition().y, backMountains.getWidth(), backMountains.getHeight());
 
         batcher.draw(AssetLoader.ground, frontGrass.getPosition().x, frontGrass.getPosition().y, frontGrass.getWidth(), frontGrass.getHeight());
         batcher.draw(AssetLoader.ground, backGrass.getPosition().x, backGrass.getPosition().y, backGrass.getWidth(), backGrass.getHeight());

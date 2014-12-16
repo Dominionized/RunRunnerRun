@@ -188,7 +188,6 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>box.gif</filename>
             <filename>cone.png</filename>
             <filename>enemy.png</filename>
             <filename>ground.png</filename>
@@ -201,6 +200,10 @@
             <filename>runner4.png</filename>
             <filename>runner_jump.png</filename>
             <filename>runner_kick.png</filename>
+            <filename>box1.png</filename>
+            <filename>box2.png</filename>
+            <filename>box3.png</filename>
+            <filename>mountains.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

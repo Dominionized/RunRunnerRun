@@ -14,8 +14,7 @@ public class ScrollHandler {
     private final int NBR_BOX = 3;
     private Grass frontGrass;
     private Grass backGrass;
-    private Sky frontSky;
-    private Sky backSky;
+    private BackgroundLayer frontSky, backSky, frontMountains, backMountains;
     private Enemy enemy;
     private List<Box> boxList;
     private GameWorld gameWorld;
@@ -27,8 +26,11 @@ public class ScrollHandler {
         frontGrass = new Grass(0, GameRenderer.getHeight() - 32, 480, 32, SCROLL_SPEED);
         backGrass = new Grass(frontGrass.getTailX(), GameRenderer.getHeight() - 32, 480, 32, SCROLL_SPEED);
 
-        frontSky = new Sky(0, 64, GameRenderer.getWidth(), 128, SCROLL_SPEED / 8);
-        backSky = new Sky(frontSky.getTailX(), 64, GameRenderer.getWidth(), 128, SCROLL_SPEED / 8);
+        frontSky = new BackgroundLayer(0, 64, GameRenderer.getWidth(), 128, SCROLL_SPEED/8);
+        backSky = new BackgroundLayer(frontSky.getTailX(), 64, GameRenderer.getWidth(), 128, SCROLL_SPEED/8);
+
+        frontMountains = new BackgroundLayer(0,128, GameRenderer.getWidth(), 200, SCROLL_SPEED/4);
+        backMountains = new BackgroundLayer(frontMountains.getTailX(), 128, GameRenderer.getWidth(), 200, SCROLL_SPEED/4);
 
         enemy = new Enemy(GameRenderer.getWidth(), GameRenderer.getHeight() - gameWorld.getGroundRect().getHeight() - 128, 64, 128, SCROLL_SPEED);
         boxList = new ArrayList<Box>();
@@ -41,11 +43,11 @@ public class ScrollHandler {
         return SCROLL_SPEED;
     }
 
-    public Sky getBackSky() {
+    public BackgroundLayer getBackSky() {
         return backSky;
     }
 
-    public Sky getFrontSky() {
+    public BackgroundLayer getFrontSky() {
         return frontSky;
     }
 
@@ -53,11 +55,21 @@ public class ScrollHandler {
         return enemy;
     }
 
+    public BackgroundLayer getFrontMountains() {
+        return frontMountains;
+    }
+
+    public BackgroundLayer getBackMountains() {
+        return backMountains;
+    }
+
     public void update(float delta) {
         frontGrass.update(delta);
         backGrass.update(delta);
         frontSky.update(delta);
         backSky.update(delta);
+        frontMountains.update(delta);
+        backMountains.update(delta);
 
         enemy.update(delta);
 
@@ -98,6 +110,16 @@ public class ScrollHandler {
         } else if (backSky.isScrolledLeft()) {
 
             backSky.reset(frontSky.getTailX());
+
+        }
+
+        if (frontMountains.isScrolledLeft()) {
+
+            frontMountains.reset(backMountains.getTailX());
+
+        } else if (backMountains.isScrolledLeft()) {
+
+            backMountains.reset(frontMountains.getTailX());
 
         }
 

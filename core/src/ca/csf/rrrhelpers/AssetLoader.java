@@ -14,7 +14,7 @@ public class AssetLoader {
     public static BitmapFont font;
     public static BitmapFont fontShadow;
     public static TextureAtlas atlas;
-    public static TextureRegion sky, ground;
+    public static TextureRegion sky, ground, mountains;
 
     public static Animation runnerAnimation;
     public static TextureRegion runnerIdle, runnerJump, runnerKick, runnerOne, runnerTwo, runnerThree, runnerFour;
@@ -38,8 +38,11 @@ public class AssetLoader {
 
         sky = new TextureRegion(atlas.createSprite("sky"));
         sky.flip(false, true);
-
         sky.getTexture().setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+
+        mountains = new TextureRegion(atlas.createSprite("mountains"));
+        mountains.flip(false, true);
+        mountains.getTexture().setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 
         ground = new TextureRegion(atlas.createSprite("ground"));
         ground.flip(false, true);
