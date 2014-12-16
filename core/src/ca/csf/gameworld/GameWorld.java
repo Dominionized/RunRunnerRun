@@ -109,6 +109,7 @@ public class GameWorld {
         } else {
             AssetLoader.gameMusic.stop();
             AssetLoader.dyingMusic.play();
+            enemy.onKilled();
             currentState = GameState.READY;
 
         }

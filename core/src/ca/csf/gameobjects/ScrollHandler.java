@@ -110,8 +110,9 @@ public class ScrollHandler {
         backGrass.onRestart(frontGrass.getTailX(), SCROLL_SPEED);
         frontSky.reset(0);
         backSky.reset(frontSky.getTailX());
-        initBoxes();
         enemy.reset(0);
+        initBoxes();
+
 
     }
 
