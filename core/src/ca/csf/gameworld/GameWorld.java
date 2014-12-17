@@ -11,7 +11,7 @@ import ca.csf.gameobjects.ScrollHandler;
 import ca.csf.rrrhelpers.AssetLoader;
 
 public class GameWorld {
-
+//
     private GameRenderer gameRenderer;
     private Runner runner;
     private Enemy enemy;
