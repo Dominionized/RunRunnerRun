@@ -1,5 +1,7 @@
 package ca.csf.gameworld;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
@@ -18,6 +20,7 @@ public class GameWorld {
     private Rectangle groundRect;
     private ScrollHandler scrollHandler;
     private GameState currentState;
+    private Preferences prefs;
 
     public GameWorld() {
         currentState = GameState.RUNNING;
@@ -29,6 +32,8 @@ public class GameWorld {
         scrollHandler = new ScrollHandler(this);
         enemy = scrollHandler.getEnemy();
         AssetLoader.gameMusic.loop();
+
+        prefs = Gdx.app.getPreferences("RRR");
     }
 
     public GameRenderer getGameRenderer() {
@@ -114,6 +119,10 @@ public class GameWorld {
             AssetLoader.dyingMusic.play();
             enemy.onKilled();
             runner.setPosition(new Vector2(runner.getPosition().x, 320));
+            runner.setVelocity(new Vector2(0,0));
+
+            logHighScore(runner.getDistance());
+
             currentState = GameState.READY;
 
         }
@@ -138,5 +147,13 @@ public class GameWorld {
 
     public enum GameState {
         READY, RUNNING
+    }
+
+    private void logHighScore(int score){
+        if (score > prefs.getInteger("highScore", 0)){
+            System.out.println("New High Score : " + score + " over " + prefs.getInteger("highScore"));
+            prefs.putInteger("highScore", score);
+            prefs.flush();
+        }
     }
 }

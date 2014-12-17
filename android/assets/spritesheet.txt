@@ -4,28 +4,28 @@ filter: Linear,Linear
 repeat: none
 box1
   rotate: false
-  xy: 698, 2
+  xy: 730, 2
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 box2
   rotate: false
-  xy: 2, 36
+  xy: 36, 36
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 box3
   rotate: false
-  xy: 36, 36
+  xy: 2, 36
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 cone
   rotate: false
-  xy: 2, 2
+  xy: 68, 2
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
@@ -39,7 +39,7 @@ enemy
   index: -1
 ground
   rotate: false
-  xy: 86, 2
+  xy: 248, 2
   size: 480, 32
   orig: 480, 32
   offset: 0, 0
@@ -60,9 +60,16 @@ mountains
   index: -1
 pausebutton
   rotate: false
-  xy: 20, 2
+  xy: 2, 2
   size: 64, 16
   orig: 64, 16
+  offset: 0, 0
+  index: -1
+readymenubackground
+  rotate: false
+  xy: 86, 2
+  size: 30, 20
+  orig: 30, 20
   offset: 0, 0
   index: -1
 runner1
@@ -102,21 +109,21 @@ runner_idle
   index: -1
 runner_jump
   rotate: false
-  xy: 258, 36
+  xy: 390, 36
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 runner_kick
   rotate: false
-  xy: 390, 36
+  xy: 258, 36
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 sky
   rotate: false
-  xy: 568, 2
+  xy: 118, 2
   size: 128, 32
   orig: 128, 32
   offset: 0, 0

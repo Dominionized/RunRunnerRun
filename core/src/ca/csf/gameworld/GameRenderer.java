@@ -26,8 +26,7 @@ public class GameRenderer {
     private static final int WIDTH = 480;
     private static final int READY_WINDOW_WIDTH = 300;
     private static final int READY_WINDOW_HEIGHT = 200;
-    private final int READY_WINDOW_X;
-    private final int READY_WINDOW_Y;
+    private static final int READY_WINDOW_PADDING = 30;
     private final GameWorld myWorld;
     private final OrthographicCamera camera;
     private final ShapeRenderer shapeRenderer;
@@ -57,9 +56,9 @@ public class GameRenderer {
         fontShadow = AssetLoader.fontShadow;
 
 
-        READY_WINDOW_X = (WIDTH - READY_WINDOW_WIDTH) / 2;
-        READY_WINDOW_Y = (HEIGHT - READY_WINDOW_HEIGHT) / 2;
-        readyWindow = new Rectangle(READY_WINDOW_X, READY_WINDOW_Y, READY_WINDOW_WIDTH, READY_WINDOW_HEIGHT);
+        int x = (WIDTH - READY_WINDOW_WIDTH) / 2;
+        int y = (HEIGHT - READY_WINDOW_HEIGHT) / 2;
+        readyWindow = new Rectangle(x, y, READY_WINDOW_WIDTH, READY_WINDOW_HEIGHT);
 
 
         initGameObjects();
@@ -123,16 +122,11 @@ public class GameRenderer {
                     runner.getX(), runner.getY(), runner.getWidth(), runner.getHeight());
         }
 
-        fontShadow.draw(batcher, myWorld.getCurrentState().toString(), 100, 100);
-        font.draw(batcher, myWorld.getCurrentState().toString(), 100, 100);
-
-
         if (myWorld.isReady()) {
-            shapeRenderer.begin(ShapeType.Filled);
-            shapeRenderer.setColor(new Color(0, 0, 0, 0.5f));
-            shapeRenderer.rect(readyWindow.x, readyWindow.y, readyWindow.width, readyWindow.height);
-            shapeRenderer.end();
-            font.draw(batcher, "Touch me to start :3", 15, 15);
+            batcher.draw(AssetLoader.readyMenuBackground, readyWindow.x, readyWindow.y, readyWindow.width, readyWindow.height);
+            String textToDraw = "YOU DIED, BITCH.\n\n" + "Your score : " + runner.getDistance() + "\nHighScore : " + Gdx.app.getPreferences("RRR").getInteger("highScore");
+            fontShadow.drawWrapped(batcher, textToDraw, readyWindow.x + READY_WINDOW_PADDING, readyWindow.y + READY_WINDOW_PADDING, readyWindow.width - 2*READY_WINDOW_PADDING, BitmapFont.HAlignment.CENTER);
+            font.drawWrapped(batcher, textToDraw, readyWindow.x + READY_WINDOW_PADDING, readyWindow.y + READY_WINDOW_PADDING, readyWindow.width - 2*READY_WINDOW_PADDING, BitmapFont.HAlignment.CENTER);
 
         } else {
 
@@ -141,7 +135,7 @@ public class GameRenderer {
             fontShadow.draw(batcher, scoreToDraw, 25, 25);
             font.draw(batcher, scoreToDraw, 25, 25);
 
-        }
+       }
 
         // End SpriteBatch
         batcher.end();

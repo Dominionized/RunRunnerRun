@@ -23,6 +23,8 @@ public class AssetLoader {
     public static TextureRegion boxOne, boxTwo, boxThree;
     public static Animation boxAnimation;
 
+    public static TextureRegion readyMenuBackground;
+
     public static Sound gameMusic, dyingMusic, jumpingSound, enemyDyingSound;
 
     public static void load() {
@@ -65,6 +67,8 @@ public class AssetLoader {
         runnerTwo = new TextureRegion(atlas.createSprite("runner2"));
         runnerThree = new TextureRegion(atlas.createSprite("runner3"));
         runnerFour = new TextureRegion(atlas.createSprite("runner4"));
+
+        readyMenuBackground = new TextureRegion(atlas.createSprite("readymenubackground"));
 
         gameMusic = Gdx.audio.newSound(Gdx.files.internal("rrrGameSong.mp3"));
         dyingMusic = Gdx.audio.newSound(Gdx.files.internal("RRRDyingSong.mp3"));
