@@ -1,6 +1,7 @@
 package ca.csf.rrrhelpers;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -25,7 +26,8 @@ public class AssetLoader {
 
     public static TextureRegion readyMenuBackground;
 
-    public static Sound gameMusic, dyingMusic, jumpingSound, enemyDyingSound;
+    public static Sound dyingMusic, jumpingSound, enemyDyingSound;
+    public static Music gameMusic;
 
     public static void load() {
 
@@ -70,7 +72,7 @@ public class AssetLoader {
 
         readyMenuBackground = new TextureRegion(atlas.createSprite("readymenubackground"));
 
-        gameMusic = Gdx.audio.newSound(Gdx.files.internal("rrrGameSong.mp3"));
+        gameMusic = Gdx.audio.newMusic(Gdx.files.internal("rrrGameSong.mp3"));
         dyingMusic = Gdx.audio.newSound(Gdx.files.internal("RRRDyingSong.mp3"));
         jumpingSound = Gdx.audio.newSound(Gdx.files.internal("jump.wav"));
         enemyDyingSound = Gdx.audio.newSound(Gdx.files.internal("enemy dying sound.mp3"));
