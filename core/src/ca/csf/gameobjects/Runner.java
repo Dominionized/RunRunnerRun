@@ -77,6 +77,7 @@ public class Runner extends GameObject implements Killable{
         if(velocity.y == 0) {
             velocity.y = -JUMP_HEIGHT;
             isJumping = true;
+            AssetLoader.jumpingSound.play();
         }
 
     }

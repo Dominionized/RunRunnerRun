@@ -24,7 +24,7 @@ public class AssetLoader {
     public static TextureRegion boxOne, boxTwo, boxThree;
     public static Animation boxAnimation;
 
-    public static Sound gameMusic , dyingMusic;
+    public static Sound gameMusic , dyingMusic, jumpingSound;
 
     public static void load(){
 
@@ -70,6 +70,7 @@ public class AssetLoader {
 
         gameMusic = Gdx.audio.newSound(Gdx.files.internal("rrrGameSong.mp3"));
         dyingMusic = Gdx.audio.newSound(Gdx.files.internal("RRRDyingSong.mp3"));
+        jumpingSound = Gdx.audio.newSound(Gdx.files.internal("jump.wav"));
 
         runnerJump.flip(false, true);
         runnerKick.flip(false, true);
