@@ -54,6 +54,7 @@ public class GameWorld {
     public void restart() {
         scrollHandler.onRestart();
         runner.restart();
+        runner.setPosition(new Vector2(runner.getPosition().x, 320 - 32 - 64));
         currentState = GameState.RUNNING;
 
         AssetLoader.dyingMusic.stop();
@@ -110,6 +111,7 @@ public class GameWorld {
             AssetLoader.gameMusic.stop();
             AssetLoader.dyingMusic.play();
             enemy.onKilled();
+           runner.setPosition(new Vector2(runner.getPosition().x, 320));
             currentState = GameState.READY;
 
         }

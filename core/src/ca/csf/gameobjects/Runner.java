@@ -40,6 +40,7 @@ public class Runner extends GameObject implements Killable{
         isAlive = true;
         isJumping = false;
         isKicking = false;
+
         distance = 0;
 
     }
