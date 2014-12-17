@@ -113,7 +113,7 @@ public class GameWorld {
             AssetLoader.gameMusic.stop();
             AssetLoader.dyingMusic.play();
             enemy.onKilled();
-           runner.setPosition(new Vector2(runner.getPosition().x, 320));
+            runner.setPosition(new Vector2(runner.getPosition().x, 320));
             currentState = GameState.READY;
 
         }

@@ -89,14 +89,8 @@ public class GameRenderer {
     }
 
     public void render(float runTime) {
-        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClearColor(65 /255.0f, 146/255.0f, 195/255.0f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-        shapeRenderer.begin(ShapeType.Filled);
-        shapeRenderer.setColor(97 / 255.0f, 211 / 255.0f, 227 / 255.0f, 1);
-        shapeRenderer.rect(0, 0, WIDTH, HEIGHT);
-        shapeRenderer.end();
-
 
         // Begin SpriteBatch
 
