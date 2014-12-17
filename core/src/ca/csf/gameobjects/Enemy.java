@@ -4,6 +4,8 @@ import com.badlogic.gdx.math.Rectangle;
 
 import java.util.Random;
 
+import ca.csf.rrrhelpers.AssetLoader;
+
 public class Enemy extends Scrollable implements Killable {
     private Rectangle boundingRectangle;
 
@@ -34,6 +36,7 @@ public class Enemy extends Scrollable implements Killable {
     @Override
     public void onKilled() {
         isAlive = false;
+
     }
 
     public Boolean isAlive() {

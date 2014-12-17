@@ -96,11 +96,13 @@ public class GameWorld {
 
                 if (Intersector.overlaps(box.getBoundingRectangle(), enemy.getBoundingRectangle())) {
                     enemy.onKilled();
+
                 }
             }
 
             if (Intersector.overlaps(runner.getBoundingRectangle(), enemy.getBoundingRectangle()) && enemy.isAlive()) {
                 if (runner.isKicking()) {
+                    AssetLoader.enemyDyingSound.play();
                     enemy.onKilled();
                 } else {
                     runner.onKilled();
