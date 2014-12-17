@@ -204,6 +204,7 @@
             <filename>box2.png</filename>
             <filename>box3.png</filename>
             <filename>mountains.png</filename>
+            <filename>pausebutton.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
