@@ -4,8 +4,6 @@ import com.badlogic.gdx.math.Rectangle;
 
 import java.util.Random;
 
-import ca.csf.rrrhelpers.AssetLoader;
-
 public class Enemy extends Scrollable implements Killable {
     private Rectangle boundingRectangle;
 
@@ -23,12 +21,12 @@ public class Enemy extends Scrollable implements Killable {
         return boundingRectangle;
     }
 
-    public void update(float delta){
+    public void update(float delta) {
         super.update(delta);
         boundingRectangle.setPosition(position);
 
-        if(!isAlive){
-            reset(random.nextInt(1000)+600);
+        if (!isAlive) {
+            reset(random.nextInt(1000) + 600);
             isAlive = true;
         }
     }

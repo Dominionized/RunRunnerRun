@@ -26,11 +26,11 @@ public class ScrollHandler {
         frontGrass = new Grass(0, GameRenderer.getHeight() - 32, 480, 32, SCROLL_SPEED);
         backGrass = new Grass(frontGrass.getTailX(), GameRenderer.getHeight() - 32, 480, 32, SCROLL_SPEED);
 
-        frontSky = new BackgroundLayer(0, 64, GameRenderer.getWidth(), 128, SCROLL_SPEED/8);
-        backSky = new BackgroundLayer(frontSky.getTailX(), 64, GameRenderer.getWidth(), 128, SCROLL_SPEED/8);
+        frontSky = new BackgroundLayer(0, 64, GameRenderer.getWidth(), 128, SCROLL_SPEED / 8);
+        backSky = new BackgroundLayer(frontSky.getTailX(), 64, GameRenderer.getWidth(), 128, SCROLL_SPEED / 8);
 
-        frontMountains = new BackgroundLayer(0,128, GameRenderer.getWidth(), 200, SCROLL_SPEED/4);
-        backMountains = new BackgroundLayer(frontMountains.getTailX(), 128, GameRenderer.getWidth(), 200, SCROLL_SPEED/4);
+        frontMountains = new BackgroundLayer(0, 128, GameRenderer.getWidth(), 200, SCROLL_SPEED / 4);
+        backMountains = new BackgroundLayer(frontMountains.getTailX(), 128, GameRenderer.getWidth(), 200, SCROLL_SPEED / 4);
 
         enemy = new Enemy(GameRenderer.getWidth(), GameRenderer.getHeight() - gameWorld.getGroundRect().getHeight() - 128, 64, 128, SCROLL_SPEED);
         boxList = new ArrayList<Box>();
@@ -151,7 +151,7 @@ public class ScrollHandler {
         return boxList;
     }
 
-    private void initBoxes(){
+    private void initBoxes() {
 
         boxList.removeAll(boxList);
 

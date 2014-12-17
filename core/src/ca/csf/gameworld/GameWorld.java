@@ -120,7 +120,7 @@ public class GameWorld {
     }
 
     public void updateReady(float delta) {
-
+        //TODO add stuff
 
     }
 

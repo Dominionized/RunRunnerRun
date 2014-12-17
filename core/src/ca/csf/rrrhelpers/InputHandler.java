@@ -18,7 +18,7 @@ public class InputHandler implements InputProcessor {
 
     @Override
     public boolean keyDown(int keycode) {
-        if (myWorld.isReady()){
+        if (myWorld.isReady()) {
             myWorld.restart();
             return true;
         }
@@ -48,14 +48,13 @@ public class InputHandler implements InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        if (myWorld.isRunning()){
-            if (screenX < (Gdx.graphics.getWidth()/2)){
+        if (myWorld.isRunning()) {
+            if (screenX < (Gdx.graphics.getWidth() / 2)) {
                 myRunner.onJump();
-            }
-            else{
+            } else {
                 myRunner.onKick();
             }
-        } else if (myWorld.isReady()){
+        } else if (myWorld.isReady()) {
             myWorld.restart();
         }
         return true;

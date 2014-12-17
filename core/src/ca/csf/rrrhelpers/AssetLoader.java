@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-import static com.badlogic.gdx.graphics.Texture.*;
+import static com.badlogic.gdx.graphics.Texture.TextureFilter;
 
 public class AssetLoader {
 
@@ -17,22 +17,21 @@ public class AssetLoader {
     public static TextureRegion sky, ground, mountains;
 
     public static Animation runnerAnimation;
-    public static TextureRegion runnerIdle, runnerJump, runnerKick, runnerOne, runnerTwo, runnerThree, runnerFour;
+    public static TextureRegion runnerJump, runnerKick, runnerOne, runnerTwo, runnerThree, runnerFour;
 
     public static TextureRegion enemy;
-    public static TextureRegion cone;
     public static TextureRegion boxOne, boxTwo, boxThree;
     public static Animation boxAnimation;
 
-    public static Sound gameMusic , dyingMusic, jumpingSound, enemyDyingSound;
+    public static Sound gameMusic, dyingMusic, jumpingSound, enemyDyingSound;
 
-    public static void load(){
+    public static void load() {
 
         font = new BitmapFont(Gdx.files.internal("font.fnt"));
-        font.setScale(0.5f,-0.5f);
+        font.setScale(0.5f, -0.5f);
 
         fontShadow = new BitmapFont(Gdx.files.internal("shadow.fnt"));
-        fontShadow.setScale(0.5f,-0.5f);
+        fontShadow.setScale(0.5f, -0.5f);
 
         atlas = new TextureAtlas("spritesheet.txt");
 
@@ -60,7 +59,6 @@ public class AssetLoader {
         boxAnimation.setPlayMode(Animation.PlayMode.LOOP_RANDOM);
         boxAnimation.setFrameDuration(0.1f);
 
-        runnerIdle = new TextureRegion(atlas.createSprite("runner_idle"));
         runnerJump = new TextureRegion(atlas.createSprite("runner_jump"));
         runnerKick = new TextureRegion(atlas.createSprite("runner_kick"));
         runnerOne = new TextureRegion(atlas.createSprite("runner1"));
@@ -78,7 +76,7 @@ public class AssetLoader {
 
         TextureRegion[] runnerRun = {runnerOne, runnerTwo, runnerThree, runnerFour};
 
-        for(TextureRegion runner : runnerRun){
+        for (TextureRegion runner : runnerRun) {
             runner.flip(false, true);
         }
 
@@ -90,7 +88,7 @@ public class AssetLoader {
         enemy.flip(false, true);
     }
 
-    public static void dispose(){
+    public static void dispose() {
         atlas.dispose();
     }
 }

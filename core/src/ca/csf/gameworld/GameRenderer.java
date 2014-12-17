@@ -12,12 +12,12 @@ import com.badlogic.gdx.math.Rectangle;
 
 import java.util.List;
 
+import ca.csf.gameobjects.BackgroundLayer;
 import ca.csf.gameobjects.Box;
 import ca.csf.gameobjects.Enemy;
 import ca.csf.gameobjects.Grass;
 import ca.csf.gameobjects.Runner;
 import ca.csf.gameobjects.ScrollHandler;
-import ca.csf.gameobjects.BackgroundLayer;
 import ca.csf.rrrhelpers.AssetLoader;
 
 public class GameRenderer {
@@ -28,12 +28,12 @@ public class GameRenderer {
     private static final int READY_WINDOW_HEIGHT = 200;
     private final int READY_WINDOW_X;
     private final int READY_WINDOW_Y;
-    private GameWorld myWorld;
-    private OrthographicCamera camera;
-    private ShapeRenderer shapeRenderer;
-    private SpriteBatch batcher;
-    private BitmapFont font;
-    private BitmapFont fontShadow;
+    private final GameWorld myWorld;
+    private final OrthographicCamera camera;
+    private final ShapeRenderer shapeRenderer;
+    private final SpriteBatch batcher;
+    private final BitmapFont font;
+    private final BitmapFont fontShadow;
     private Runner runner;
     private ScrollHandler scrollHandler;
     private BackgroundLayer frontSky, backSky, frontMountains, backMountains;
@@ -78,7 +78,7 @@ public class GameRenderer {
         scrollHandler = myWorld.getScrollHandler();
 
         frontSky = scrollHandler.getFrontSky();
-        backSky= scrollHandler.getBackSky();
+        backSky = scrollHandler.getBackSky();
         frontMountains = scrollHandler.getFrontMountains();
         backMountains = scrollHandler.getBackMountains();
         frontGrass = scrollHandler.getFrontGrass();
@@ -89,7 +89,7 @@ public class GameRenderer {
     }
 
     public void render(float runTime) {
-        Gdx.gl.glClearColor(65 /255.0f, 146/255.0f, 195/255.0f, 1);
+        Gdx.gl.glClearColor(65 / 255.0f, 146 / 255.0f, 195 / 255.0f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         // Begin SpriteBatch
@@ -132,7 +132,7 @@ public class GameRenderer {
             shapeRenderer.setColor(new Color(0, 0, 0, 0.5f));
             shapeRenderer.rect(readyWindow.x, readyWindow.y, readyWindow.width, readyWindow.height);
             shapeRenderer.end();
-            font.draw(batcher, "Touch me to start :3", 15,15);
+            font.draw(batcher, "Touch me to start :3", 15, 15);
 
         } else {
 
@@ -146,7 +146,7 @@ public class GameRenderer {
         // End SpriteBatch
         batcher.end();
 
-/* BOUNDING BOX
+        /* // Display the bounding box
         shapeRenderer.begin(ShapeType.Line);
         shapeRenderer.setColor(0 / 255.0f, 0 / 255.0f, 0 / 255.0f, 1);
         shapeRenderer.rect(runner.getBoundingRectangle().getX(), runner.getBoundingRectangle().getY(), runner.getBoundingRectangle().getWidth(), runner.getBoundingRectangle().getHeight());
