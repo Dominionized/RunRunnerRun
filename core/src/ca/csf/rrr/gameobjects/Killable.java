@@ -1,4 +1,4 @@
-package ca.csf.gameobjects;
+package ca.csf.rrr.gameobjects;
 
 public interface Killable {
 

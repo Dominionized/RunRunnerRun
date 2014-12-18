@@ -1,4 +1,4 @@
-package ca.csf.gameworld;
+package ca.csf.rrr.gameworld;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
@@ -6,11 +6,11 @@ import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
-import ca.csf.gameobjects.Box;
-import ca.csf.gameobjects.Enemy;
-import ca.csf.gameobjects.Runner;
-import ca.csf.gameobjects.ScrollHandler;
-import ca.csf.rrrhelpers.AssetLoader;
+import ca.csf.rrr.gameobjects.Box;
+import ca.csf.rrr.gameobjects.Enemy;
+import ca.csf.rrr.gameobjects.Runner;
+import ca.csf.rrr.gameobjects.ScrollHandler;
+import ca.csf.rrr.helpers.AssetLoader;
 
 public class GameWorld {
 

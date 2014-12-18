@@ -1,11 +1,11 @@
-package ca.csf.screens;
+package ca.csf.rrr.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 
-import ca.csf.gameworld.GameRenderer;
-import ca.csf.gameworld.GameWorld;
-import ca.csf.rrrhelpers.InputHandler;
+import ca.csf.rrr.gameworld.GameRenderer;
+import ca.csf.rrr.gameworld.GameWorld;
+import ca.csf.rrr.helpers.InputHandler;
 
 public class GameScreen implements Screen {
     private GameWorld world;

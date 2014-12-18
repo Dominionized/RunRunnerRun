@@ -1,11 +1,11 @@
-package ca.csf.rrrhelpers;
+package ca.csf.rrr.helpers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 
-import ca.csf.gameobjects.Runner;
-import ca.csf.gameworld.GameWorld;
+import ca.csf.rrr.gameobjects.Runner;
+import ca.csf.rrr.gameworld.GameWorld;
 
 public class InputHandler implements InputProcessor {
     private final GameWorld myWorld;

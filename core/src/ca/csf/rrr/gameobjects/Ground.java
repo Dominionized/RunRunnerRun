@@ -1,4 +1,4 @@
-package ca.csf.gameobjects;
+package ca.csf.rrr.gameobjects;
 
 public class Ground extends Scrollable {
     public Ground(float x, float y, int width, int height, float scrollSpeed) {

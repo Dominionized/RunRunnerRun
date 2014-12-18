@@ -1,11 +1,11 @@
-package ca.csf.gameobjects;
+package ca.csf.rrr.gameobjects;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import ca.csf.gameworld.GameRenderer;
-import ca.csf.gameworld.GameWorld;
+import ca.csf.rrr.gameworld.GameRenderer;
+import ca.csf.rrr.gameworld.GameWorld;
 
 public class ScrollHandler {
 

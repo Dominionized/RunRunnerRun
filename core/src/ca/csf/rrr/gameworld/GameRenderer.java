@@ -1,24 +1,22 @@
-package ca.csf.gameworld;
+package ca.csf.rrr.gameworld;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Rectangle;
 
 import java.util.List;
 
-import ca.csf.gameobjects.BackgroundLayer;
-import ca.csf.gameobjects.Box;
-import ca.csf.gameobjects.Enemy;
-import ca.csf.gameobjects.Grass;
-import ca.csf.gameobjects.Runner;
-import ca.csf.gameobjects.ScrollHandler;
-import ca.csf.rrrhelpers.AssetLoader;
+import ca.csf.rrr.gameobjects.BackgroundLayer;
+import ca.csf.rrr.gameobjects.Box;
+import ca.csf.rrr.gameobjects.Enemy;
+import ca.csf.rrr.gameobjects.Grass;
+import ca.csf.rrr.gameobjects.Runner;
+import ca.csf.rrr.gameobjects.ScrollHandler;
+import ca.csf.rrr.helpers.AssetLoader;
 
 public class GameRenderer {
 

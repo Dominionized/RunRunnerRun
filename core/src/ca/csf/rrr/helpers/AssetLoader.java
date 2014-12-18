@@ -1,4 +1,4 @@
-package ca.csf.rrrhelpers;
+package ca.csf.rrr.helpers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;

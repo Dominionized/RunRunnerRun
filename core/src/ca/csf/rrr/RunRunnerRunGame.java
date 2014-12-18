@@ -3,8 +3,8 @@ package ca.csf.rrr;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 
-import ca.csf.rrrhelpers.AssetLoader;
-import ca.csf.screens.GameScreen;
+import ca.csf.rrr.helpers.AssetLoader;
+import ca.csf.rrr.screens.GameScreen;
 
 public class RunRunnerRunGame extends Game {
 

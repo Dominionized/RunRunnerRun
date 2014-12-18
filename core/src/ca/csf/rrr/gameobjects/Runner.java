@@ -1,9 +1,9 @@
-package ca.csf.gameobjects;
+package ca.csf.rrr.gameobjects;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
-import ca.csf.rrrhelpers.AssetLoader;
+import ca.csf.rrr.helpers.AssetLoader;
 
 
 public class Runner extends GameObject implements Killable {
@@ -123,6 +123,5 @@ public class Runner extends GameObject implements Killable {
     public void onKilled() {
         this.isAlive = false;
         System.out.println("touch");
-
     }
 }
