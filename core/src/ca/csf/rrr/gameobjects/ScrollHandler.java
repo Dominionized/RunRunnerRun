@@ -9,9 +9,18 @@ import ca.csf.rrr.gameworld.GameWorld;
 
 public class ScrollHandler {
 
-    private final int SCROLL_SPEED = 300;
-    private final int BOX_GAP = 175;
-    private final int NBR_BOX = 3;
+    private final static int SCROLL_SPEED = 300;
+    private final static int FIRST_BOX_GAP = 175;
+    private final static int MIN_BOX_GAP = 300;
+    private final static int MAX_BOX_GAP = 446;
+    private final static int NBR_BOX = 3;
+    private final static int POSITION_Y_SKY = 64;
+    private final static int HEIGHT_SKY = 128;
+    private final static int HEIGHT_MOUNTAIN = 200;
+    private final static int MIN_BOX_SIZE = 32;
+    private final static int MAX_BOX_SIZE = 64;
+    private final static int SCROLL_SPEED_SKY = SCROLL_SPEED/8;
+    private final static int SCROLL_SPEED_MOUNTAIN = SCROLL_SPEED/8;
 
     private Grass frontGrass;
     private Grass backGrass;
@@ -27,13 +36,13 @@ public class ScrollHandler {
         frontGrass = new Grass(0, GameRenderer.getHeight() - gameWorld.getGroundRect().getHeight(), GameRenderer.getWidth(), (int)gameWorld.getGroundRect().getHeight(), SCROLL_SPEED);
         backGrass = new Grass(frontGrass.getTailX(), GameRenderer.getHeight() - gameWorld.getGroundRect().getHeight(), GameRenderer.getWidth(), (int)gameWorld.getGroundRect().getHeight(), SCROLL_SPEED);
 
-        frontSky = new BackgroundLayer(0, 64, GameRenderer.getWidth(), 128, SCROLL_SPEED / 8);
-        backSky = new BackgroundLayer(frontSky.getTailX(), 64, GameRenderer.getWidth(), 128, SCROLL_SPEED / 8);
+        frontSky = new BackgroundLayer(0, POSITION_Y_SKY, GameRenderer.getWidth(), HEIGHT_SKY, SCROLL_SPEED_SKY);
+        backSky = new BackgroundLayer(frontSky.getTailX(), POSITION_Y_SKY, GameRenderer.getWidth(), HEIGHT_SKY, SCROLL_SPEED_SKY);
 
-        frontMountains = new BackgroundLayer(0, 128, GameRenderer.getWidth(), 200, SCROLL_SPEED / 4);
-        backMountains = new BackgroundLayer(frontMountains.getTailX(), 128, GameRenderer.getWidth(), 200, SCROLL_SPEED / 4);
+        frontMountains = new BackgroundLayer(0, HEIGHT_SKY, GameRenderer.getWidth(), HEIGHT_MOUNTAIN, SCROLL_SPEED_MOUNTAIN);
+        backMountains = new BackgroundLayer(frontMountains.getTailX(), HEIGHT_SKY, GameRenderer.getWidth(), HEIGHT_MOUNTAIN, SCROLL_SPEED_MOUNTAIN);
 
-        enemy = new Enemy(GameRenderer.getWidth(), GameRenderer.getHeight() - gameWorld.getGroundRect().getHeight() - 128, 64, 128, SCROLL_SPEED);
+        enemy = new Enemy(GameRenderer.getWidth(), GameRenderer.getHeight() - gameWorld.getGroundRect().getHeight() - HEIGHT_SKY, POSITION_Y_SKY, HEIGHT_SKY, SCROLL_SPEED);
         boxList = new ArrayList<Box>();
 
         initBoxes();
@@ -73,14 +82,14 @@ public class ScrollHandler {
             box.update(delta);
 
             Random random = new Random();
-            float posX = BOX_GAP + random.nextInt(400);
+            float posX = FIRST_BOX_GAP + random.nextInt(MAX_BOX_GAP);
             if (i == 0) {
                 posX += boxList.get(boxList.size() - 1).getTailX();
             } else {
                 posX += boxList.get(i - 1).getTailX();
             }
 
-            int size = random.nextInt(32) + 32;
+            int size = random.nextInt(MAX_BOX_SIZE - MIN_BOX_SIZE) + MIN_BOX_SIZE;
 
             if (box.isScrolledLeft()) {
                 box.reset(posX);
@@ -121,7 +130,7 @@ public class ScrollHandler {
     }
 
     public void onRestart() {
-        // TODO Ces calls de methodes ne sont pas necessairement les bons. Il faudra peut-etre les modifier.
+
         frontGrass.onRestart(0, SCROLL_SPEED);
         backGrass.onRestart(frontGrass.getTailX(), SCROLL_SPEED);
         frontSky.reset(0);
@@ -150,12 +159,12 @@ public class ScrollHandler {
         Random random = new Random();
 
         for (int i = 0; i < NBR_BOX; ++i) {
-            int gapToAdd = random.nextInt(300);
-            float posX = 446 + gapToAdd;
+            int gapToAdd = random.nextInt(MIN_BOX_GAP);
+            float posX = MAX_BOX_GAP + gapToAdd;
             if (i > 0) {
-                posX = boxList.get(i - 1).getTailX() + BOX_GAP + gapToAdd;
+                posX = boxList.get(i - 1).getTailX() + FIRST_BOX_GAP + gapToAdd;
             }
-            boxList.add(new Box(posX, GameRenderer.getHeight() - 64, 32, 32, SCROLL_SPEED));
+            boxList.add(new Box(posX, GameRenderer.getHeight() - POSITION_Y_SKY, MIN_BOX_SIZE, MIN_BOX_SIZE, SCROLL_SPEED));
         }
 
     }
