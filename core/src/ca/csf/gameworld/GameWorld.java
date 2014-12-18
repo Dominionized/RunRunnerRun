@@ -25,9 +25,9 @@ public class GameWorld {
     public GameWorld() {
         currentState = GameState.RUNNING;
         groundRect = new Rectangle();
-        groundRect.set(0, 320 - 32, 480, 32);
+        groundRect.set(0, 288, 480, 32);
 
-        runner = new Runner(100, 320 - 32 - 108, 64, 64);
+        runner = new Runner(100, 180, 64, 64);
 
         scrollHandler = new ScrollHandler(this);
         enemy = scrollHandler.getEnemy();
@@ -60,7 +60,7 @@ public class GameWorld {
     public void restart() {
         scrollHandler.onRestart();
         runner.restart();
-        runner.setPosition(new Vector2(runner.getPosition().x, 320 - 32 - 64));
+        runner.setPosition(new Vector2(runner.getPosition().x, 224));
         currentState = GameState.RUNNING;
 
         AssetLoader.dyingMusic.stop();
@@ -93,7 +93,7 @@ public class GameWorld {
             if (Intersector.overlaps(runner.getBoundingRectangle(), groundRect)) {
                 runner.setIsJumping(false);
                 runner.setVelocity(new Vector2(0, 0));
-                runner.setPosition(new Vector2(runner.getPosition().x, 320 - 32 - 64));
+                runner.setPosition(new Vector2(runner.getPosition().x, 224));
             }
 
             for (Box box : scrollHandler.getBoxList()) {

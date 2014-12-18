@@ -139,13 +139,5 @@ public class GameRenderer {
 
         // End SpriteBatch
         batcher.end();
-
-        /* // Display the bounding box
-        shapeRenderer.begin(ShapeType.Line);
-        shapeRenderer.setColor(0 / 255.0f, 0 / 255.0f, 0 / 255.0f, 1);
-        shapeRenderer.rect(runner.getBoundingRectangle().getX(), runner.getBoundingRectangle().getY(), runner.getBoundingRectangle().getWidth(), runner.getBoundingRectangle().getHeight());
-        shapeRenderer.end();
-        */
-
     }
 }

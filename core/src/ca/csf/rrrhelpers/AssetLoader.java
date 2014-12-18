@@ -11,7 +11,6 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import static com.badlogic.gdx.graphics.Texture.TextureFilter;
 
 public class AssetLoader {
-
     public static BitmapFont font;
     public static BitmapFont fontShadow;
     public static TextureAtlas atlas;

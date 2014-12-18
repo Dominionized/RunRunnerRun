@@ -12,6 +12,7 @@ public class ScrollHandler {
     private final int SCROLL_SPEED = 300;
     private final int BOX_GAP = 175;
     private final int NBR_BOX = 3;
+
     private Grass frontGrass;
     private Grass backGrass;
     private BackgroundLayer frontSky, backSky, frontMountains, backMountains;
@@ -23,8 +24,8 @@ public class ScrollHandler {
 
         this.gameWorld = gameWorld;
 
-        frontGrass = new Grass(0, GameRenderer.getHeight() - 32, 480, 32, SCROLL_SPEED);
-        backGrass = new Grass(frontGrass.getTailX(), GameRenderer.getHeight() - 32, 480, 32, SCROLL_SPEED);
+        frontGrass = new Grass(0, GameRenderer.getHeight() - gameWorld.getGroundRect().getHeight(), GameRenderer.getWidth(), (int)gameWorld.getGroundRect().getHeight(), SCROLL_SPEED);
+        backGrass = new Grass(frontGrass.getTailX(), GameRenderer.getHeight() - gameWorld.getGroundRect().getHeight(), GameRenderer.getWidth(), (int)gameWorld.getGroundRect().getHeight(), SCROLL_SPEED);
 
         frontSky = new BackgroundLayer(0, 64, GameRenderer.getWidth(), 128, SCROLL_SPEED / 8);
         backSky = new BackgroundLayer(frontSky.getTailX(), 64, GameRenderer.getWidth(), 128, SCROLL_SPEED / 8);
@@ -36,13 +37,7 @@ public class ScrollHandler {
         boxList = new ArrayList<Box>();
 
         initBoxes();
-
     }
-
-    public int getScrollSpeed() {
-        return SCROLL_SPEED;
-    }
-
     public BackgroundLayer getBackSky() {
         return backSky;
     }
@@ -127,15 +122,12 @@ public class ScrollHandler {
 
     public void onRestart() {
         // TODO Ces calls de methodes ne sont pas necessairement les bons. Il faudra peut-etre les modifier.
-
         frontGrass.onRestart(0, SCROLL_SPEED);
         backGrass.onRestart(frontGrass.getTailX(), SCROLL_SPEED);
         frontSky.reset(0);
         backSky.reset(frontSky.getTailX());
         enemy.reset(0);
         initBoxes();
-
-
     }
 
 
