@@ -124,7 +124,7 @@ public class GameRenderer {
 
         if (myWorld.isReady()) {
             batcher.draw(AssetLoader.readyMenuBackground, readyWindow.x, readyWindow.y, readyWindow.width, readyWindow.height);
-            String textToDraw = "YOU DIED, BITCH.\n\n" + "Your score : " + runner.getDistance() + "\nHighScore : " + Gdx.app.getPreferences("RRR").getInteger("highScore");
+            String textToDraw = "YOU DIED.\n\n" + "Your score : " + runner.getDistance() + "\nHighScore : " + Gdx.app.getPreferences("RRR").getInteger("highScore");
             fontShadow.drawWrapped(batcher, textToDraw, readyWindow.x + READY_WINDOW_PADDING, readyWindow.y + READY_WINDOW_PADDING, readyWindow.width - 2*READY_WINDOW_PADDING, BitmapFont.HAlignment.CENTER);
             font.drawWrapped(batcher, textToDraw, readyWindow.x + READY_WINDOW_PADDING, readyWindow.y + READY_WINDOW_PADDING, readyWindow.width - 2*READY_WINDOW_PADDING, BitmapFont.HAlignment.CENTER);
 
