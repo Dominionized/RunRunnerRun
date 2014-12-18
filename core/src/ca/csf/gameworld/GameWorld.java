@@ -32,6 +32,7 @@ public class GameWorld {
         scrollHandler = new ScrollHandler(this);
         enemy = scrollHandler.getEnemy();
         AssetLoader.gameMusic.play();
+        AssetLoader.gameMusic.setLooping(true);
 
         prefs = Gdx.app.getPreferences("RRR");
     }
@@ -64,6 +65,7 @@ public class GameWorld {
 
         AssetLoader.dyingMusic.stop();
         AssetLoader.gameMusic.play();
+        AssetLoader.gameMusic.setLooping(true);
 
     }
 
