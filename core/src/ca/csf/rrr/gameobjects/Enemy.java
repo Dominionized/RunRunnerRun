@@ -32,7 +32,7 @@ public class Enemy extends Scrollable implements Killable {
             reset(random.nextInt(ENEMY_MAX_GAP) + ENEMY_MIN_GAP);
             isAlive = true;
         }
-    }
+    } //
 
     @Override
     public void onKilled() {
