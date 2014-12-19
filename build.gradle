@@ -37,9 +37,10 @@ project(":core") {
     sourceSets.test.java.srcDirs = ["test/"]
 
     dependencies {
+
+        testCompile "junit:junit:+"
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
-	
-	testCompile "junit:junit:4.11" 
+
     }
 }
 
