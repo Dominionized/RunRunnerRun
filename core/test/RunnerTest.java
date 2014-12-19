@@ -6,7 +6,7 @@ import ca.csf.rrr.gameobjects.Runner;
 import static org.junit.Assert.*;
 
 public class RunnerTest {
-
+/*
     Runner runner;
 
 
@@ -23,5 +23,5 @@ public class RunnerTest {
         assertTrue(runner.isKicking());
     }
 
-
+*/
 }
