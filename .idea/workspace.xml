@@ -12,10 +12,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: ca.csf.rrr.android" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1f59cba-604b-4ded-9e97-84f605f3cfc3" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/desktop/assets" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-    </list>
+    <list default="true" id="a1f59cba-604b-4ded-9e97-84f605f3cfc3" name="Default" comment="" />
     <ignored path="RunRunnerRun.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
