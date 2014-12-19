@@ -28,30 +28,46 @@ public class AssetLoader {
     public static Sound dyingMusic, jumpingSound, enemyDyingSound;
     public static Music gameMusic;
 
+    private final static String FONTS = "font.fnt";
+    private final static String SHADOWS = "shadow.fnt";
+    private final static String SPRITES_SHEET = "spritesheet.txt";
+    private final static String SKY = "sky";
+    private final static String MOUNTAINS = "mountains";
+    private final static String GROUND = "ground";
+    private final static String BOX1 = "box1";
+    private final static String BOX2 = "box2";
+    private final static String BOX3 = "box3";
+    private final static String RUNNER_JUMP = "box3";
+    private final static String RUNNER_KICK = "box3";
+    private final static String RUNNER1 = "box3";
+    private final static String RUNNER2 = "box3";
+    private final static String RUNNER3 = "box3";
+    private final static String RUNNER4 = "box3";
+
     public static void load() {
 
-        font = new BitmapFont(Gdx.files.internal("font.fnt"));
+        font = new BitmapFont(Gdx.files.internal(FONTS));
         font.setScale(0.5f, -0.5f);
 
-        fontShadow = new BitmapFont(Gdx.files.internal("shadow.fnt"));
+        fontShadow = new BitmapFont(Gdx.files.internal(SHADOWS));
         fontShadow.setScale(0.5f, -0.5f);
 
-        atlas = new TextureAtlas("spritesheet.txt");
+        atlas = new TextureAtlas(SPRITES_SHEET);
 
-        sky = new TextureRegion(atlas.createSprite("sky"));
+        sky = new TextureRegion(atlas.createSprite(SKY));
         sky.flip(false, true);
         sky.getTexture().setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 
-        mountains = new TextureRegion(atlas.createSprite("mountains"));
+        mountains = new TextureRegion(atlas.createSprite(MOUNTAINS));
         mountains.flip(false, true);
         mountains.getTexture().setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 
-        ground = new TextureRegion(atlas.createSprite("ground"));
+        ground = new TextureRegion(atlas.createSprite(GROUND));
         ground.flip(false, true);
 
-        boxOne = new TextureRegion(atlas.createSprite("box1"));
-        boxTwo = new TextureRegion(atlas.createSprite("box2"));
-        boxThree = new TextureRegion(atlas.createSprite("box3"));
+        boxOne = new TextureRegion(atlas.createSprite(BOX1));
+        boxTwo = new TextureRegion(atlas.createSprite(BOX2));
+        boxThree = new TextureRegion(atlas.createSprite(BOX3));
         boxOne.flip(false, true);
         boxTwo.flip(false, true);
         boxThree.flip(false, true);
