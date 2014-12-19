@@ -12,6 +12,7 @@ public class Runner extends GameObject implements Killable {
     private static final float KICK_DURATION = 0.5f;
     private static final int SPEED = 5;
     private static final int GRAVITY = 981;
+    private static final int RUNNER_SIZE_X = 981;
     private Rectangle boundingRectangle;
     private boolean isAlive;
     private boolean isJumping;
@@ -23,7 +24,7 @@ public class Runner extends GameObject implements Killable {
         this.width = width;
         this.height = height;
         boundingRectangle = new Rectangle();
-        boundingRectangle.setSize(16, height);
+        boundingRectangle.setSize(RUNNER_SIZE_X, height);
 
         position = new Vector2(x, y);
         velocity = new Vector2(0, 0);
