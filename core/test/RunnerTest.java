@@ -2,6 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ca.csf.rrr.gameobjects.Runner;
+import ca.csf.rrr.helpers.AssetLoader;
 
 import static org.junit.Assert.*;
 
@@ -12,16 +13,22 @@ public class RunnerTest {
 
     @Before
     public void setUp() throws Exception {
+
+        //Else, there will be a NullPointerException...
+
         runner = new Runner(0.0f, 0.0f, 0, 0);
 
     }
 
-    @Test
-    public void testOnKick() throws Exception {
-
+    @Test(expected = NullPointerException.class)
+    public void testOnKick() {
         runner.onKick();
         assertTrue(runner.isKicking());
     }
 
-
+    @Test(expected = NullPointerException.class)
+    public void testOnJump() {
+        runner.onJump();
+        assertTrue(runner.getVelocity().y > 0);
+    }
 }

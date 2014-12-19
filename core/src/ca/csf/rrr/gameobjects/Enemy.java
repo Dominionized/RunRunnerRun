@@ -37,6 +37,7 @@ public class Enemy extends Scrollable implements Killable {
     @Override
     public void onKilled() {
         isAlive = false;
+        System.out.println("Collided !");
 
     }
 
