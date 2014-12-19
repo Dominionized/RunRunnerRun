@@ -37,12 +37,18 @@ public class AssetLoader {
     private final static String BOX1 = "box1";
     private final static String BOX2 = "box2";
     private final static String BOX3 = "box3";
-    private final static String RUNNER_JUMP = "box3";
-    private final static String RUNNER_KICK = "box3";
-    private final static String RUNNER1 = "box3";
-    private final static String RUNNER2 = "box3";
-    private final static String RUNNER3 = "box3";
-    private final static String RUNNER4 = "box3";
+    private final static String RUNNER_JUMP = "runner_jump";
+    private final static String RUNNER_KICK = "runner_kick";
+    private final static String RUNNER1 = "runner1";
+    private final static String RUNNER2 = "runner2";
+    private final static String RUNNER3 = "runner3";
+    private final static String RUNNER4 = "runner4";
+    private final static String ENEMY = "enemy";
+    private final static String READY_MENU_BACKGROUND = "readymenubackground";
+    private final static String GAME_MUSIC = "rrrGameSong.mp3";
+    private final static String DYING_SOUND = "RRRDyingSong.mp3";
+    private final static String JUMP_SOUND = "jump.wav";
+    private final static String ENEMY_DYING_SOUND = "enemy dying sound.mp3";
 
     public static void load() {
 
@@ -78,19 +84,19 @@ public class AssetLoader {
         boxAnimation.setPlayMode(Animation.PlayMode.LOOP_RANDOM);
         boxAnimation.setFrameDuration(0.1f);
 
-        runnerJump = new TextureRegion(atlas.createSprite("runner_jump"));
-        runnerKick = new TextureRegion(atlas.createSprite("runner_kick"));
-        runnerOne = new TextureRegion(atlas.createSprite("runner1"));
-        runnerTwo = new TextureRegion(atlas.createSprite("runner2"));
-        runnerThree = new TextureRegion(atlas.createSprite("runner3"));
-        runnerFour = new TextureRegion(atlas.createSprite("runner4"));
+        runnerJump = new TextureRegion(atlas.createSprite(RUNNER_JUMP));
+        runnerKick = new TextureRegion(atlas.createSprite(RUNNER_KICK));
+        runnerOne = new TextureRegion(atlas.createSprite(RUNNER1));
+        runnerTwo = new TextureRegion(atlas.createSprite(RUNNER2));
+        runnerThree = new TextureRegion(atlas.createSprite(RUNNER3));
+        runnerFour = new TextureRegion(atlas.createSprite(RUNNER4));
 
-        readyMenuBackground = new TextureRegion(atlas.createSprite("readymenubackground"));
+        readyMenuBackground = new TextureRegion(atlas.createSprite(READY_MENU_BACKGROUND));
 
-        gameMusic = Gdx.audio.newMusic(Gdx.files.internal("rrrGameSong.mp3"));
-        dyingMusic = Gdx.audio.newSound(Gdx.files.internal("RRRDyingSong.mp3"));
-        jumpingSound = Gdx.audio.newSound(Gdx.files.internal("jump.wav"));
-        enemyDyingSound = Gdx.audio.newSound(Gdx.files.internal("enemy dying sound.mp3"));
+        gameMusic = Gdx.audio.newMusic(Gdx.files.internal(GAME_MUSIC));
+        dyingMusic = Gdx.audio.newSound(Gdx.files.internal(DYING_SOUND));
+        jumpingSound = Gdx.audio.newSound(Gdx.files.internal(JUMP_SOUND));
+        enemyDyingSound = Gdx.audio.newSound(Gdx.files.internal(ENEMY_DYING_SOUND));
 
         runnerJump.flip(false, true);
         runnerKick.flip(false, true);
@@ -105,7 +111,7 @@ public class AssetLoader {
         runnerAnimation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
         runnerAnimation.setFrameDuration(0.1f);
 
-        enemy = new TextureRegion(atlas.createSprite("enemy"));
+        enemy = new TextureRegion(atlas.createSprite(ENEMY));
         enemy.flip(false, true);
     }
 
