@@ -12,7 +12,7 @@ public class Runner extends GameObject implements Killable {
     private static final float KICK_DURATION = 0.5f;
     private static final int SPEED = 5;
     private static final int GRAVITY = 981;
-    private static final int RUNNER_SIZE_X = 981;
+    private static final int RUNNER_SIZE_X = 16;
     private Rectangle boundingRectangle;
     private boolean isAlive;
     private boolean isJumping;
