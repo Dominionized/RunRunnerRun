@@ -22,19 +22,29 @@ public class GameWorld {
     private GameState currentState;
     private Preferences prefs;
 
+    private final static int RUNNER_WIDTH_HEIGHT = 64;
+    private final static int RUNNER_X = 100;
+    private final static int RUNNER_X_POSITION = 224;
+    private final static int RUNNER_X_POSITION_ON_DEATH = 320;
+    private final static int RUNNER_Y = 180;
+    private final static int GROUND_Y = 288;
+    private final static int GROUND_WIDTH = 480;
+    private final static int GROUND_HEIGHT = 32;
+    private final static String PREFERENCES = "RRR";
+
     public GameWorld() {
         currentState = GameState.RUNNING;
         groundRect = new Rectangle();
-        groundRect.set(0, 288, 480, 32);
+        groundRect.set(0, GROUND_Y, GROUND_WIDTH, GROUND_HEIGHT);
 
-        runner = new Runner(100, 180, 64, 64);
+        runner = new Runner(RUNNER_X, RUNNER_Y, RUNNER_WIDTH_HEIGHT, RUNNER_WIDTH_HEIGHT);
 
         scrollHandler = new ScrollHandler(this);
         enemy = scrollHandler.getEnemy();
         AssetLoader.gameMusic.play();
         AssetLoader.gameMusic.setLooping(true);
 
-        prefs = Gdx.app.getPreferences("RRR");
+        prefs = Gdx.app.getPreferences(PREFERENCES);
     }
 
     public GameRenderer getGameRenderer() {
@@ -60,7 +70,7 @@ public class GameWorld {
     public void restart() {
         scrollHandler.onRestart();
         runner.restart();
-        runner.setPosition(new Vector2(runner.getPosition().x, 224));
+        runner.setPosition(new Vector2(runner.getPosition().x, RUNNER_X_POSITION));
         currentState = GameState.RUNNING;
 
         AssetLoader.dyingMusic.stop();
@@ -93,7 +103,7 @@ public class GameWorld {
             if (Intersector.overlaps(runner.getBoundingRectangle(), groundRect)) {
                 runner.setIsJumping(false);
                 runner.setVelocity(new Vector2(0, 0));
-                runner.setPosition(new Vector2(runner.getPosition().x, 224));
+                runner.setPosition(new Vector2(runner.getPosition().x, RUNNER_X_POSITION));
             }
 
             for (Box box : scrollHandler.getBoxList()) {
@@ -120,7 +130,7 @@ public class GameWorld {
             AssetLoader.gameMusic.stop();
             AssetLoader.dyingMusic.play();
             enemy.onKilled();
-            runner.setPosition(new Vector2(runner.getPosition().x, 320));
+            runner.setPosition(new Vector2(runner.getPosition().x, RUNNER_X_POSITION_ON_DEATH));
             runner.setVelocity(new Vector2(0,0));
 
             logHighScore(runner.getDistance());
