@@ -6,6 +6,7 @@ import com.badlogic.gdx.InputProcessor;
 
 import ca.csf.rrr.gameobjects.Runner;
 import ca.csf.rrr.gameworld.GameWorld;
+import ca.csf.rrr.screens.GameScreen;
 
 public class InputHandler implements InputProcessor {
     private final GameWorld myWorld;
@@ -43,6 +44,14 @@ public class InputHandler implements InputProcessor {
 
     @Override
     public boolean keyTyped(char character) {
+
+        if (character == 'q'){
+
+            myWorld.pause();
+
+        }
+
+
         return false;
     }
 
@@ -80,4 +89,6 @@ public class InputHandler implements InputProcessor {
     public boolean scrolled(int amount) {
         return false;
     }
+
+
 }

@@ -94,6 +94,8 @@ public class GameWorld {
 
     public void updateRunning(float delta) {
 
+        if (currentState != GameState.PAUSE){
+
         if (runner.isAlive()) {
 
             runner.update(delta);
@@ -139,6 +141,7 @@ public class GameWorld {
 
         }
     }
+    }
 
     public void updateReady(float delta) {
         //TODO add stuff
@@ -158,7 +161,7 @@ public class GameWorld {
     }
 
     public enum GameState {
-        READY, RUNNING
+        READY, RUNNING, PAUSE
     }
 
     private void logHighScore(int score){
@@ -167,5 +170,16 @@ public class GameWorld {
             prefs.putInteger("highScore", score);
             prefs.flush();
         }
+    }
+
+    public void pause(){
+
+        if (currentState == GameState.PAUSE){
+            currentState = GameState.RUNNING;
+        }
+        else{
+            currentState = GameState.PAUSE;
+        }
+
     }
 }
