@@ -32,12 +32,12 @@ public class GameWorld {
     private final static int GROUND_HEIGHT = 32;
     private final static String PREFERENCES = "RRR";
 
-    public GameWorld() {
+    public GameWorld(int midPointY) {
         currentState = GameState.RUNNING;
         groundRect = new Rectangle();
         groundRect.set(0, GROUND_Y, GROUND_WIDTH, GROUND_HEIGHT);
 
-        runner = new Runner(RUNNER_X, RUNNER_Y, RUNNER_WIDTH_HEIGHT, RUNNER_WIDTH_HEIGHT);
+        runner = new Runner(midPointY + RUNNER_X, RUNNER_Y, RUNNER_WIDTH_HEIGHT, RUNNER_WIDTH_HEIGHT);
 
         scrollHandler = new ScrollHandler(this);
         enemy = scrollHandler.getEnemy();

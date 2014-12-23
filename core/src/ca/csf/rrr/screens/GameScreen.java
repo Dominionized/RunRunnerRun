@@ -3,6 +3,7 @@ package ca.csf.rrr.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 
+import ca.csf.rrr.RunRunnerRunGame;
 import ca.csf.rrr.gameworld.GameRenderer;
 import ca.csf.rrr.gameworld.GameWorld;
 import ca.csf.rrr.helpers.InputHandler;
@@ -13,7 +14,13 @@ public class GameScreen implements Screen {
     private float runTime = 0;
 
     public GameScreen() {
-        world = new GameWorld();
+        float screenWidth = Gdx.graphics.getWidth();
+        float screenHeight = Gdx.graphics.getHeight();
+        float gameWidth = 136;
+        float gameHeight = screenHeight / (screenWidth / gameWidth);
+        int midPointY = (int) (gameHeight / 2);
+
+        world = new GameWorld(midPointY);
         renderer = new GameRenderer(world);
     }
 
@@ -29,6 +36,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
+
     }
 
     @Override
